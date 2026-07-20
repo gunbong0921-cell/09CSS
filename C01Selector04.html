@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C01Selector04.html</title>
+  <style>
+    body {
+      font-size: 20px; font-family: Tahoma;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    .menu a {
+      color: black;
+    }
+    .menu a:visited {
+      color: blueviolet;
+    }
+    .menu a:hover {
+      color: red; font-weight: bold;
+    }
+    .menu a:active {
+      color: yellow; background-color: black;
+    }
+  </style>
+  <h2>반응 셀렉터</h2>
+  <!-- div>ul>li*5 -->
+   <div>
+    <ul class="menu">
+      <li><a href="#a">메뉴1</a></li>
+      <li><a href="#b">메뉴2</a></li>
+      <li><a href="#c">메뉴3</a></li>
+      <li><a href="#d">메뉴4</a></li>
+      <li><a href="#e">메뉴5</a></li>
+    </ul>
+   </div>
+   <style>
+    input:focus {
+      border: 3px red dotted; background-color: yellow; 
+    }
+    input:enabled {
+      color: red; font-weight: bold;
+    }
+    input:disabled {
+      color: blue; background-color: aqua;
+      border: 1px gray solid;
+    }
+   </style>
+   <h2>상태 셀렉터</h2>
+   <div>
+    <form action="">
+      이름 : <input type="text" name="name" />
+      <br />
+      아이디 : <input type="text" name="id" />
+      <br />
+      패스워드 : <input type="text" name="pwd" value="1234" disabled />
+    </form>
+   </div>
+   <style>
+    .linker > li{list-style-type: none;}
+    .linker > li > a::after {
+      content: '-(웹주소)' attr(href);
+    }
+   </style>
+   <h2>after 셀렉터</h2>
+   <!-- div>ul.link>(li>a)*5 -->
+    <div>
+      <ul class="linker">
+        <li><a href="http://www.naver.com">네이봐</a></li>
+        <li><a href="http://nate.com">너이트</a></li>
+        <li><a href="http://daum.net">다움</a></li>
+        <li><a href="http://google.com">가글</a></li>
+        <li><a href="http://yahoo.com">야후</a></li>
+      </ul>
+    </div>
+    <style>
+      .notClass > li:not(.odd){
+        background-color: yellow;
+      }
+    </style>
+    <h2>부정 셀렉터</h2>
+    <!-- div>ul.notClass>(li>a)*4 -->
+     <div>
+      <ul class="notClass">
+        <li class="odd"><a href="#">Naver</a></li>
+        <li><a href="#">Nate</a></li>
+        <li class="odd"><a href="#">Daum</a></li>
+        <li><a href="#">Google</a></li>
+      </ul>
+     </div>
+</body>
+</html>
