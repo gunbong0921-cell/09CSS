@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C01Selector01.html</title>
+  <style type="text/CSS">
+    *{
+      margin: 10px;
+      font-family: Verdana;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    mark{
+      background-color: aquamarine;
+    }
+    hr{
+      height: 3px; background-color: blueviolet;
+    }
+  </style>
+  <h2>태그 셀렉트</h2>  
+  수평선은 <mark>hr</mark>태그를 사용합니다.  
+  <hr>
+  <style>
+    -positive{
+      font-weight: bold; background-color: yellow;
+    }
+    -nagative{
+      color: silver; font-size: 12px;
+    }
+  </style>
+  <h2>클래스 셀렉터</h2>  
+  <div>
+    저의 <span class="positive">장점</span>은
+      <span class="positive">긍정적인성격</span>입니다.
+    <br />
+    저의 <span class="nagative">단점</span>은
+      <span class="nagative">지저분한스타일</span> 입니다.        
+  </div>
+  <style>
+    #basketball{
+      color: skyblue; font-size: 20px;
+    }
+    #pingpong{
+      color: blueviolet; font-size: 12px;
+    }
+  </style>
+  <h2>아이디 셀렉터</h2>
+  <!-- ul>li*3 -->
+   <ul>
+    <li>축구</li>
+    <li id="basketball">농구</li>
+    <li>야구</li>
+    <li id="pingpong">탁구</li>
+    <li>배구</li>
+   </ul>
+   <style>
+    .myDiv span{
+      color: red; font-size: 24px;
+    }
+    .myDiv > span{
+      color: blue; font-size: 14px;
+    }
+    span.myclass{
+      background-color: blueviolet; color: white;
+    }
+    span .myclass{
+      background-color: black; color: yellow;
+    }
+   </style>
+   <h2>하위 셀렉터 및 지식 셀렉터</h2>
+   <div class="myDiv">
+    <span>A.myDiv의 하위태그 & 자식태그</span>
+    <fieldset>
+      <span>B.myDiv의 하위태그</span> 
+    </fieldset>
+    <span class="myclass">
+      C.클래스를 부여한 span태그
+    </span>
+   </div>
+   <style>
+    .multi h2, .multi h3, .multi h4 {
+      color: blue;
+    }
+   </style>
+   <h2>다중 셀렉터</h2>
+   <!-- .multi>h2*4 -->
+    <div class="multi">
+      <h2>제목1</h2>
+      <h2>제목2</h2>
+      <h2>제목3</h2>
+      <h2>제목4</h2>
+    </div>
+</body>
+</html>
