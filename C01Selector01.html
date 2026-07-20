@@ -5,18 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>C01Selector01.html</title>
   <style type="text/CSS">
+    /*
+    Selector(선택자)
+    1.전체선택자 : 해당 문서 전체의 글꼴(font)이나 여백(margin, padding)을 지정할 때
+      사용한다. *는 HTML문서 전체를 가리키는 셀렉터이다. body 태그선택자와 유사하다. 
+    */
     *{
+      /* 현재 ㅁ누서의 마진을 10px로 지정한다. 상하좌우가 동시에 적용된다. */
       margin: 10px;
-      font-family: Verdana;
+      /* 문서의 기본 글꼴을 지정한다. 굴림, 돋움 등을 사용할 수 있다. */
+      font-family: Verdana;  
     }
   </style>
 </head>
 <body>
   <style>
+    /* 
+    2. 태그선택자 : 태그명과 동일한 이름을 사용하여 문서내의 모든 캐그를 한꺼번에 선택한다.
+      태그명 앞에 특수기호가 사용되지 않는다. 
+    */
     mark{
+      /* mark 태그의 기본 배경색 변경 */
       background-color: aquamarine;
     }
     hr{
+      /* 수평선에 높이를 적용하여 두께를 표현 */
       height: 3px; background-color: blueviolet;
     }
   </style>
@@ -24,10 +37,17 @@
   수평선은 <mark>hr</mark>태그를 사용합니다.  
   <hr>
   <style>
-    -positive{
+    /*  
+    3. 클래스 선택자 : class 속성으로 선택가능한 셀렉터로 문서내에서 중복적으로 사용할 수 있다.
+      즉 여러개의 엘리먼트에 동일한 스타일을 적용할 수 있어 주로 li, td와 같은 태그에 사용된다. 
+      .으로 접근한다. 
+    */
+    .positive{
+      /* 텍스트의 두께와 배경색을 지정 */
       font-weight: bold; background-color: yellow;
     }
-    -nagative{
+    .nagative{
+      /* 텍스트의 색깔과 크기를 지정 */
       color: silver; font-size: 12px;
     }
   </style>
@@ -40,6 +60,10 @@
       <span class="nagative">지저분한스타일</span> 입니다.        
   </div>
   <style>
+    /*
+    4. 아이디 선택자 : id속성으로 선택 가능하며 #을 통해 접근한다. 사용법은 클래스 선택자와 동일하지만,
+      아이디는 문서내에서 하나만 사용해야한다. 
+    */
     #basketball{
       color: skyblue; font-size: 20px;
     }
@@ -57,12 +81,25 @@
     <li>배구</li>
    </ul>
    <style>
+    /*
+    5. 하위선택자 : 스페이스로 구분하여 항목을 선택한다. 특정 태그 하위의 모든 엘리먼트를 선택한다.
+      table이라면 tr, td 모두 선택된다.
+    6. 자식선택자 : >(꺽쇄괄호)로 구분해서 항목을 선택한다. 하위에 있는 태그 중 1단계, 즉 자식 엘리먼트만
+      선택한다. table이라면 tr만 선택된다.  
+    */
+    /* 하위선택자이므로 A,B,C 엘리먼트 모두 선택됨 */
     .myDiv span{
       color: red; font-size: 24px;
     }
+    /* 자식선택자이므로 A,C 엘리먼트만 선택되어 스타일 적용 */
     .myDiv > span{
       color: blue; font-size: 14px;
     }
+    /*
+    선택자를 기술할때 아래와 같이 스페이스 하나 차이로 선택되는 엘리먼트가 달라질 수 있다.
+    스페이스(공백)가 없는 경우에는 span태그 중에서 myclass라는 클래스 속성을 찾아 선택한다.
+    즉 여기서는 C가 선택된다. 공백이 없는 경우에는 하위선택자 이므로 선택되는 엘리먼트가 없다.   
+    */
     span.myclass{
       background-color: blueviolet; color: white;
     }
@@ -81,6 +118,10 @@
     </span>
    </div>
    <style>
+    /*
+    7. 다중선택자 : 여러개의 선택자를 한꺼번에 지정해서 스타일을 부여할때 사용한다. ,(콤마)를
+      통해 구분하면 된다. 
+    */
     .multi h2, .multi h3, .multi h4 {
       color: blue;
     }
