@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>C01Selector04.html</title>
   <style>
+    /* 현재 문서의 기본스타일 지정 */
     body {
       font-size: 20px; font-family: Tahoma;
     }
@@ -12,15 +13,28 @@
 </head>
 <body>
   <style>
+    /*
+    13. 반응선택자 : 마우스의 반응에 따라 엘리먼트를 선택하여 스타일을 설정한다.
+    hover : 해당 엘리먼트에 마우스를 올렸을때
+    active : 클릭할때
+    visited : 방문 이력이 있을때 선택 
+    */
+    /*
+    a태그로 링크가 걸린 텍스트를 검은색으로 표현(스타일을 별도로 지정하지 않으면
+    텍스트는 파란색이 되고, 언더라인이 추가된다.) 
+    */
     .menu a {
-      color: black;
+      color: black; text-decoration: none;
     }
+    /* 방문이력이 있는 경우 */
     .menu a:visited {
       color: blueviolet;
     }
+    /* 마우스를 오버 시 선택 */
     .menu a:hover {
       color: red; font-weight: bold;
     }
+    /* 마우스를 클릭 시 선택 */
     .menu a:active {
       color: yellow; background-color: black;
     }
@@ -37,7 +51,16 @@
     </ul>
    </div>
    <style>
+    /*
+    14. 상태선택자 : 엘리먼트의 현재 상태에 따라 태그를 선택한다. 
+      focus : 포커스를 얻었을때, 입력을 위해 커서가 있는 경우 선택
+      enabled : 활성화된 상태. input태그의 경우 디폴트(기본) 기본상태를
+        의미한다. 즉 입력 또는 클릭할 수 있는 상태인 경우 선택.
+      disabled : 비활성화된 상태. 이 경우 새로운 값을 입력하거나 서버로
+        값을 전송할 수 없을때 선택.   
+    */
     input:focus {
+      /* 테두리를 점선, 배경은 노란색으로 표시 */
       border: 3px red dotted; background-color: yellow; 
     }
     input:enabled {
@@ -59,8 +82,19 @@
     </form>
    </div>
    <style>
+    /*
+    15. after선택자 : 선택된 엘리먼트를 감싸고 있는 컨텐츠 뒷 부분에 특정
+      내용을 추가할 수 있다. 
+    */
+    /* li태그의 블릿을 제거 */
     .linker > li{list-style-type: none;}
+    /* 
+    내용 뒷부분에 텍스트와 href속성값을 연결해서 추가. CSS의 after 선택자를 통해 추가된
+    텍스트는 물리적으로 존재하지 않으므로 마우스를 통해 선택하거나 복사할 수 없다. 즉 화면에 
+    랜더링만 된다.
+     */
     .linker > li > a::after {
+      /* 선택한 엘리먼트 뒤에 문자열과 href 속성값을 추가해서 연결한다. */
       content: '-(웹주소)' attr(href);
     }
    </style>
@@ -76,6 +110,10 @@
       </ul>
     </div>
     <style>
+      /*
+      16. 부정선택자 : 선택한 엘리먼트 이외의 모든 태그를 선택해서 스타일 적용한다.
+      */
+      /* odd 클래스를 제외한 엘리먼트를 선택하므로 nate, google이 선택되어 배경색을 설정됨 */
       .notClass > li:not(.odd){
         background-color: yellow;
       }
