@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C01Selector03.html</title>
+  <style>
+    /* 클래스 셀렉터를 통해 공통 속성 부여 */
+    .content{
+      width: 300px; background-color: yellow;
+    }
+    /* 자식선택자를 통해 li를 선택한 후 스타일 지정 */
+    .content > ul > li{
+      /* 블릿제거, 마진, 패딩 등의 스타일 설정 */
+      list-style: none; border: 1px solid green;
+      font-size: 20px; font-weight: bold; height: 30px;
+      margin-left: -20px; padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    /*
+    11. 구조선택자 : 동일한 수준의 태그들 중에서 홀수 혹은 짝수번째 엘리먼트를 선택해서
+      스타일을 적용한다. n은 1부터 시작. 주로 스트라이프 효과를 줄때 사용한다.
+    */
+    /* n이 1이면 홀수가 되므로 홀수번째 요소를 선택한다. */
+    #menu1 > li:nth-child(2n+1){
+      background-color: salmon;
+    }
+    /* 짝수번째 요소 선택 */
+    #menu1 > li:nth-child(2n){
+      background-color: aqua;
+    }
+  </style>
+  <h2>구조선택자1</h2>
+  <!-- #content>ul>li*6 -->
+   <div class="content">
+    <ul id="menu1">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+      <li>메뉴5</li>
+      <li>메뉴6</li>
+    </ul>
+   </div>
+   <style>
+    /* 구조선택자의 일종으로 첫번째 혹은 마지막 엘리먼트 선택 */
+    #menu2 > li:first-child {
+      background-color: red; color: #ffffff;
+    }
+    #menu2 > li:last-child {
+      background-color: blue; color: #ffffff;
+    }
+    /* 구조선택자는 n대신 정수를 직접 입력할 수 있다. 3번째 엘리먼트를 선택해서 글자색을
+      red로 설정한다. */
+    #menu2 > li:nth-child(3){
+      color: red;
+    }
+   </style>
+   <h2>구조선택자2</h2>
+   <!-- #content>ul>li*6 -->
+    <div class="content">
+      <ul id="menu2">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+        <li>메뉴6</li>
+      </ul>
+    </div>
+    <style>
+      /*
+      12. 문자선택자 : 특정 원소의 글자 혹은 문자열을 선택해서 스타일을 적용한다.
+      */
+      /* 첫번째 문자를 선택해서 글자크기 설정 */
+      #book1:first-letter, #book2:first-letter {
+        font-size: 30px;
+      }
+      /* 첫번째 중(라인)을 선택해서 색깔과 굵기 설정 */
+      #book1:first-line, #book2:first-line {
+        color: red; font-weight: bold;
+      }
+      /* 해당 텍스트를 블럭으로 지정할 경우 반전되는 배경색과 텍스트 색깔을 지정 */
+      #character span::selection {
+        color: yellow; background-color: black;
+      }
+      /* #character의 자식으로는 span 태그가 없으므로 해당 스타일은 적용되지 않는다. */
+      #character > span::selection {
+        color: red; background-color: blue;
+      }
+    </style>
+    <h2>문자선택자</h2>
+    <!-- #character>p*2 -->
+     <div id="character">
+      <p id="book1">
+        삼국지 <br>
+        중국의 2새기말~3새기말의 <span>후한말기</span>와 <span>삼국시대</span>를
+        배경으로 한 역사서
+      </p>
+      <p id="book2">
+        서유기 <br/>
+        명대의 작가인 오승은이 그간에 전해지는 <span>서유기 설화</span>를 취합하여
+        새롭게 창작한 중국의 고전소설
+      </p>
+     </div>
+</body>
+</html>
