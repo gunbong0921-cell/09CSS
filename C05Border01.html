@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C05Border01.html</title>
+  <style>
+    /*
+    div 박스의 공통 스타일 지정. 수평, 수직 방향에서 텍스트를 가운데로 정렬
+    */
+   div div {
+    text-align: center; width: 200px; height: 200px;
+    line-height: 200px;
+   } 
+   /* 테두리 모양 : 굵은점선, 얇은점선, 실선, 이중실선 */
+   #border1 {
+    border-top-style: dashed;
+    border-right-style: dotted;
+    border-bottom-style: solid;
+    border-left-style: double;
+   }
+   /* 테두리 색깔 지정 */
+   #border2 {
+    border-style: dashed;
+
+    border-top-color: green;
+    border-right-color: red;
+    border-bottom-color: blue;
+    border-left-color: coral;
+   }
+   /* 테두리 두께 */
+   #border3 {
+    border-style: dotted;
+    
+    border-top-width: 10px;
+    border-right-width: 15px;
+    border-bottom-width: 20px;
+    border-left-width: 25px;
+   }
+   /* 
+   통합 속성으로 지정하기, 3가지 속성을 동시에 적용할 수 있다.
+   속성값의 순서는 별도로 지정하지 않는다. 스페이스로 구분만 잘해주면 자동으로 적용된다. 
+   */
+   #border4 {
+    border: red double 5px;
+   }
+   /* 테두리 전체를 제거한 후 왼쪽, 아래쪽만 스타일을 적용해서 L자 모양을 만들어준다. */
+   #border5 {
+    border: none;
+    border-bottom: 2px solid green;
+    border-left: 2px gray solid;
+   }
+  </style>
+</head>
+<body>
+  <h2>테두리 관련 CSS 속성</h2>
+  <div>
+    <h2>테두리 스타일</h2>
+    <div id="border1">
+      border-style
+    </div>
+
+    <h2>테두리 색상</h2>
+    <div id="border2">
+      border-color
+    </div>
+
+    <h2>테두리 두께</h2>
+    <div id="border3">
+      border-width
+    </div>
+
+    <h2>테두리 색상&두께&스타일 동시지정</h2>
+    <div id="border4">
+      border      
+    </div>
+
+    <h3>폼의 하위요소인 input에 적용하기</h3>
+    <input type="text" id="border5" />
+  </div>
+</body>
+</html>

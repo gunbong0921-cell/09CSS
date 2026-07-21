@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C05Border03.html</title>
+</head>
+<style>
+  /*
+  전체선택자를 통해 페이지의 마진과 패딩을 지정한다. 사이즈 지정시 0인 경우에는 px단위를 생략할 수 있다.
+  */
+  *{margin: 0; padding: 0;}
+  /*
+  모든 div 태그에 공통으로 적용하는 스타일 설정. 가로, 세로가 200px이고 테두리는 1px*2, 패딩이 10px*2로
+  지정되므로 전체 크기는 222px로 지정된다. 
+  */
+  div{
+    width: 200px; height: 200px; line-height: 200px;
+    text-align: center; border: 1px solid red; padding: 10px;
+  }
+  /* 옆에서 공통으로 적용된 패딩과 보더를 모두 0으로 재설정한다. 따라서 원래 크기인 200px로 적용된다. */
+  #box1{
+    border: 0; padding: 0; background-color: orange;
+  }
+  /* 
+  div에 공통으로 적용한 패딩과 보더를 그대로 유지한채로 박스의 크기를 200px로 맞춰서 출력한다. 속성값인
+  border-box는 가로, 세로 모두 패딩과 보더를 포함해서 설정한 크기로 맞추는 역할을 한다. 단 내부의 텍스트는
+  패딩의 영향을 받아 중앙에서 약간 아래쪽으로 밀려있는것을 볼 수 있다. 
+   */
+  #box2{
+    background-color: purple;
+    box-sizing: border-box;
+  }
+  /*
+  공통으로 적용된 padding이 10px이므로 우측 및 하단으로 20px만큼 사이즈가 추가된다. 또한 border가 1px
+  씩 적용되어 있으므로 전체 222px이 된다. condent-box 속성값은 박스모델의 디폴트값이다.
+  */
+  #box3{
+    background-color: #CECECE;
+    box-sizing: content-box;
+  }
+</style>
+<body>
+  <h2>box-sizing 속성</h2>
+
+  <div id="box1">box1</div>
+  <br />
+  <div id="box2">box2</div>
+  <br />
+  <div id="box3">box3</div>
+</body>
+</html>
