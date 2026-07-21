@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C07MarginPadding2.html</title>
+</head>
+<body>
+  <style>
+    .box1{border: 1px solid red;}
+    .box2{border: 1px solid green;}
+  </style>
+  <h2>block과 block의 마진</h2>
+  <fieldset>
+    <!-- 
+    블럭요소인 box1과 2에 각각 하단, 상단으로 마진을 적용하면 큰값 하나만 적용된다.
+    따라서 아래 설정은 100px만큼만 마진이 적용된다.  
+    -->
+    <legend>Case1</legend>
+    <div class="box1" style="margin-bottom: 50px;">
+      Block1번
+    </div>
+    <div class="box2" style="margin-top: 100px;">
+      Block2번
+    </div>
+  </fieldset>
+
+  <h2>block과 inline의 마진</h2>
+  <fieldset>
+    <!-- 
+    box1에서 하단으로 설정한 마진은 적용된다. 하지만 box2에서 상단으로 지정한
+    마진은 적용되지 않는다. 패딩과 동일하게 인라인 엘리먼트는 좌, 우측의 마진만 적용된다.  
+    -->
+    <legend>Case2</legend>
+    <div class="box1" style="margin-bottom: 30px;">
+      Block
+    </div>
+    <span class="box2" style="margin-top: 999px; margin-left:30px;">
+      Inline
+    </span>
+  </fieldset>
+
+  <h2>inline과 inline의 마진</h2>
+  <fieldset>
+    <legend>Case3</legend>
+    <!-- 
+    box1과 2에서 각각 우측 좌측으로 마진을 부여하면 3개의 값이 합쳐진만큼 간격이 벌어진다. 즉 
+    아래의 경우 50px만큼 적용된다.
+    -->
+    <span class="box1" style="margin-left: 30px; margin-right:30px;">
+      Inline1번
+    </span>
+    <span class="box2" style="margin-left: 20px;">
+      Inline2번
+    </span>
+  </fieldset>
+</body>
+</html>

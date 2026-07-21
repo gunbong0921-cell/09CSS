@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C08List1.html</title>
+  <style>
+    #topmenu li{
+      display: inline;
+      border-right: 2px solid gray;
+      padding-right: 7px;
+    }
+    #topmenu li:last-child{
+      border: none;
+    }
+    #topmenu li a{
+      text-decoration: none; color: black;
+    }
+    #topmenu li a:hover{
+      text-decoration: underline; color: silver;
+    }
+    .sport {
+      border: 5px solid blue;
+      list-style-type: upper-alpha;
+      list-style-position: inside;
+    }
+    .sport li {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h2>li 태그로 메뉴 구현</h2>
+  <!-- fieldest>legend+ul#topmenu>(li>a[href=#])*5 -->
+   <fieldset>
+    <legend>Top메뉴</legend>
+    <ul id="topmenu">
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">회원가입</a></li>
+      <li><a href="#">로그인</a></li>
+      <li><a href="#">장바구니</a></li>
+      <li><a href="#">고객센터</a></li>
+    </ul>
+   </fieldset>
+
+   <h2>블릿 위치 변경</h2>
+   <fieldset>
+    <legend>당신이 가장 좋아하는 스포츠는?</legend>
+    <!-- ul.sport>li*5 -->
+     123
+     <ul class="sport">
+      <li>축구</li>
+      <li>야구</li>
+      <li>배구</li>
+      <li>농구</li>
+      <li>핸드볼</li>
+     </ul>
+   </fieldset>
+</body>
+</html>

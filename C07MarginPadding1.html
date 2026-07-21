@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C07MarginPadding1.html</title>
+  <style>
+    /* 패딩 속성값을 개별적으로 지정 */
+    #div1 {
+      border: 1px solid gray;
+      padding-top: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+    }
+    /*
+    4방향 모두 한꺼번에 20px로 지정. 앞에서 지정한 div1과 동일하게 설정된다.
+    */
+    #div2 {
+      border: 1px solid red;
+      padding: 20px;
+    }
+    /* 속성값이 2개일때는 상하, 좌우 순으로 지정 */
+    #div3 {
+      border: 1px solid blue;
+      padding: 30px 50px;
+    }
+    /* 속성값이 3개일때는 상, 좌우, 하 순으로 지정 */
+    #div4 {
+      border: 1px solid green;
+      padding: 30px 100px 10px;
+    }
+    /* 속성값이 4개일때는 상, 우, 하, 좌 순으로 시계방향으로 지정된다. */
+    #div5 {
+      border: 1px solid black;
+      padding: 10px 30px 50px 70px;
+    }
+  </style>
+</head>
+<body>
+  <h2>블럭 엘리먼트의 패딩</h2>
+
+  <div id="div1">
+    "상우하좌" 여백 각각 지정하기
+  </div>
+  <div id="div2">
+    "상우하좌" 여백 동시 지정하기
+  </div>
+  <div id="div3">
+    "상하" "좌우" "하" 여백 각각 지정하기
+  </div>
+  <div id="div4">
+    "상" "좌우" "하" 여백 각각 지정하기
+  </div>
+  <div id="div5">
+    "상" "우" "하" "좌" 여백 각각 지정하기
+  </div>
+
+  <h2>인라인 엘리먼트의 패딩</h2>
+  <!-- 
+  인라인 요소에 패딩을 부여하면 영역이 늘어나긴 하지만 다른 컨텐츠에 영향을 주는것은 왼쪽, 
+  오른쪽만 가능하다. 상단, 하단은 다른 컨텐츠에 영향을 주지 않으므로, 지정하고 싶다면
+  부모 요소를 통해 간접적으로 설정해야한다.
+  -->
+  123
+  <span style="border: 1px solid orange; padding:0px 30px 0px 50px" >
+    나는 span 태그입니다. 인라인엘리먼트이죠~~
+  </span>
+  456
+  <br>
+  span태그 아래쪽 텍스트~~~~~~
+</body>
+</html>
