@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C03Font01.html</title>
+  <style>
+    /*
+    기본폰트 사이즈를 지정하지 않으면 16px(12pt)로 지정돤다.
+    이때 1em은 16px과 동일한 크기가 된다.
+    아래와 같이 12px로 지정하면 1em도 동일하게 지정된다. 
+    */
+    body {
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>기본상태의 텍스트 크기</h2>
+  <!-- 기본폰트 사이즈를 지정하지 않은 상태라면 아래의 텍스트는 모두 동일한 크기로 출력된다.
+   만약 12px로 기본폰트를 지정하면 em단위만 조금 작게 렌더링된다. -->
+  기본폰트<br>
+  <span style="font-size: 16px;">폰트크기16px</span>
+  <span style="font-size: 12pt;">폰트크기12pt</span>
+  <span style="font-size: 1em;">폰트크기1em</span>
+
+  <h2>텍스트를 2배로 확대</h2>
+  <span style="font-size: 32px;">폰트크기32px</span>
+  <span style="font-size: 24pt;">폰트크기24pt</span>
+  <span style="font-size: 2em;">폰트크기1em</span>
+
+  <h2>텍스트를 1/2로 축소하기</h2>
+  <span style="font-size: 8px;">폰트크기8px</span>
+  <span style="font-size: 6pt;">폰트크기6pt</span>
+  <span style="font-size: .5em;">폰트크기.5em</span>
+  <!-- 
+  HTML에서의 단위
+  px : 모니터에서 하나의 점을 나타내는 크기. 가장 많이 사용됨.
+  pt : 인쇄용으로 사용되는 크기. 워드프로세스와 동일한 크기를 가짐.
+  em : 현쟈 지정된 기본폰트 사이즈와 동일하게 표현. 사이즈를 스케일로 조정하여 화면에 렌더링. 
+    주로 모바일웹에서 많이 사용된다. 
+  -->
+
+  <h3>텍스트 모양에 관련된 속성</h3>
+  <!-- 
+  font-size : 텍스트 크기
+  font-family : 글꼴(폰트) 지정. windows 하위 fonts 폴더에 설치된 글꼴을 기준으로 렌더링됨.
+  -->
+  <span style="font-size: 1.8em; font-family:HYPMokGak">
+    텍스트 크기, 글꼴, HYPMokGak
+  </span>
+  <br>
+  <span style="font-size: 1.8em; font-family:'Bauhaus 93';">
+    텍스트 크기, 글꼴, Bauhaus 93
+  </span>
+  <br>
+  <span style="font-size: 1.8em; font-family:d2Coding;">
+    텍스트 크기, 글꼴, d2Coding
+  </span>
+
+  <h3>텍스트의 두께 및 스타일</h3>
+  <!-- 
+  font-weight : 텍스트 두께
+  bold : 두껍게
+  normal : 보통(디폰트값)
+  lighter : 얇게
+  font-style : 스타일 지정
+  italic : 이탤릭체(기울임)로 표현
+  -->
+  <span style="font-weight: bold; font-style:italic">
+    두껍게 씁시다. 그리고 이탤릭체로 표현할게요.
+  </span>
+
+  <h3>텍스트 사이의 간격(자간)</h3>
+  <span style="letter-spacing: 1.5em; border: 1px solid red;">
+    그냥 하세요. 두려움은 일시적이지만, 후회는 영원하니까.
+  </span>
+
+  <h3>단어 사이의 간격</h3>
+  <span style="word-spacing: 2em; border: 1px solid red;">
+    인생은 초콜릿 상자와 같아. 무엇을 집게 될지 모르거든
+  </span>
+</body>
+</html>

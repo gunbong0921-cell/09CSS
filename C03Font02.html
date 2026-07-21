@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C03Font02.html</title>
+  <style>
+    /* 현재 문서의 기본 폰트사이즈를 12px로 지정 */
+    body{
+      font-size: 12px;
+    }
+    /* 현재 문서의 모든 a태그를 선택해서 스타일 지정. 텍스트에 별도의 효과가 없는 상태로 설정 */
+    a {
+      text-decoration: none; color: black;
+    }
+    /* 링크가 걸린 텍스트에 마우스를 올렸을때의 스타일 설정. '밑줄'이 생기고 색깔, 크기가 변경됨 */
+    a:hover {
+      text-decoration: underline; color: green;
+      font-size: 30px; font-weight: bold;
+    }
+    /* 링크를 클릭하면 '윗줄'이 생김 */
+    a:active {
+      text-decoration: overline; color: red;
+    }
+    /* 방문이력이 있는 경우 텍스트의 모든 효과를 제거한다. */
+    a:visited {
+      text-decoration: none; color: blue;
+    }
+
+    /* a태그 중에서 클래스 속성이 other인 엘리먼트를 선택해서 다른 효과를 부여한다. */
+    a.other{
+      text-decoration: none; color: brown;
+    }
+    a.other:hover {
+      /* 취소선(텍스트의 가운데 줄)이 표현됨 */
+      text-decoration: line-through; color: #707070;
+      font-size: 20px; font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>텍스트 꾸미기</h2>
+  <!-- div>ul.link>(li>a)*5 -->
+   <div>
+    <ul class="link">
+      <li><a href="http://naver.com">네이봐</a></li>
+      <li><a href="http://nate.com">너이트</a></li>
+      <li><a href="http://daum.net">다움</a></li>
+      <li><a href="http://google.com">가글</a></li>
+      <li><a href="http://tjoeun.co.kr">더조은</a></li>
+      <li><a href="http://yahoo.com">야후</a></li>
+      <li><a href="http://jobkorea.co.kr">잡코리아</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <a href="http://www.tmon.co.kr" class="other">다른효과주기</a>
+   </div>
+</body>
+</html>
