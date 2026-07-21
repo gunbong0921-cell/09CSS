@@ -8,20 +8,28 @@
 <body>
   <h2>배경색 지정</h2>
   <div>
+    <!-- 블럭 요소는 컨텐츠의 크기에 상관없이 하나의 블럭(100%)만큼 배경색이 지정된다. -->
     <div style="background-color: #FF0000;">
       블럭엘리먼트
     </div>
+    <!-- 인라인 요소는 컨텐츠의 크기만큼만 배경색이 지정된다. -->
     <span style="background-color: #00FF00;">
       인라인엘리먼트 <br /> 인라인엘리먼트
     </span>
   </div>
   <h2>배경이미지 지정</h2>
   <style>
+    /* 아이디 back1 하위의 모든 div를 선택해서 크기 지정. 특히 가로는 상대크기로 설정. */
     #back1 div{
       width: 80%; height: 200px;
     }
     #back1 div:first-child {
+      /* 배경이미지의 경로 설정. 경로가 잘못되면 배경이 사라진다. */
       background-image: url('./images/3.png');
+      /* 
+      배경이미지에 대한 반복여주 설정. 가로, 세로 혹은 전체방향으로 반복할 수 있다.
+      또는 배경이미지를 딱 한번만 표시할 수도 있다. 
+      */
       background-repeat: repeat;
       border: 1px solid red;
     }
@@ -35,12 +43,13 @@
     <div>안녕하세요? 저는 뚱이입니다.</div>
     <div>반가워용~~</div>
   </div>
-  
+
   <h2>배경 속성 개별 사용</h2>
   <style>
     #back2 {
       background-image: url('./images/apple.png');
       background-repeat: repeat;
+      /* 배경이미지의 시작위치를 지정. 순서대로 좌측, 상단을 지정할 수 있다. */
       background-position: 20px 30px;
       background-color: yellow;
       width: 80%; height: 200px;
@@ -51,6 +60,9 @@
 
   <h2>배경 속성 동시 사용</h2>
   <style>
+    /*
+    4가지 배경 속성을 한꺼번에 부여할때 사용. 순서는 상관없이 띄어쓰기만 잘해주면 된다. 
+    */
     #back3 {
       background: url('./images/pattern.jpg') 20px 40px rgb(20, 184, 89) repeat;
       width: 80%; height: 200px;
