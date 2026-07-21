@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C04Paragraph1.html</title>
+  <style>
+    .boRed{ border: 1px solid red;}
+    .boBlue{ border: 1px solid blue;} 
+    .boBlack{ border: 1px solid black;}
+    .box21{width: 200px; height: 100px;}
+  </style>
+</head>
+<body>
+  <h2>수평방향에서 정렬</h2>
+  <!-- 
+  블럭엘리먼트 : 컨텐츠의 크기에 상관없이 하나의 블럭을 차지하므로 우측 공간이 충분하여
+    컨텐츠를 우측으로 정렬할 수 있다.
+  인라인엘리먼트 : 컨텐츠의 크기만큼만 영역을 차지하므로 컨텐츠가 움직일 공간이 없어서 
+    정렬되지 않는다. 정렬이 필요한 경우에는 부모 엘리먼트로 감싼 후 정렬해야 한다.
+  -->
+  <div style="width: 400px;">
+    <!-- 블럭 요소는 해당 영역에서 가로크기 100%로 설정되므로 내부의 컨텐츠를 정렬
+     할 수 있다. -->
+    <div style="text-align: right;" class="boRed">
+      블럭엘리먼트
+    </div>
+    <!-- 인라인 요소만으로는 정렬이 되지 않으므로, 부모 요소를 추가하여 span태그 자체를 
+     우측으로 밀어줘야 한다. -->
+    <!-- <div style="text-align: right;"> -->
+    <span style="text-align: right;" class="boBlue">
+      인라인엘리먼트
+    </span>
+    <!-- </div> -->
+  </div>
+  <h2>수직방향에서 정렬</h2>
+  <h4>블럭엘리먼트 - 방법1</h4>
+  <!-- div태그의 height와 line-height(줄간격)의 값을 동일하게 설정하면 세로 방향에서 가운데
+   정렬이 된다. 블럭 요소에 line-height를 부여했을때 영역이 상하로 늘어나는 것을 활용
+   하는 것이다. -->
+  <div style="line-height: 100px;" class="boRed box21">
+    나는 텍스트1
+  </div>
+
+  <h4>블럭엘리먼트 - 방법2</h4>
+  <!-- div 내부에서 padding을 지정해서 텍스트를 아래로 밀어준다. 단 밀어주는 만큼 세로 영역이
+   늘어나게 되므로 사이즈는 별도로 확인해야한다. -->
+  <div style="padding-top: 80px;" class="boBlue box21">
+    나는 텍스트2
+  </div>
+
+  <h4>블럭엘리먼트 - vertical-align 적용안됨</h4>
+  <!-- 수직방향에서의 정렬을 위한 속성이 블럭 요소에서는 적용되지 않으므로 위 2가지의 방법을 
+   사용하는 것이다. -->
+  <div style="vertical-align: middle;" class="boBlack box21">
+    나는 텍스트3
+  </div>
+
+  <style>
+    #myTable {
+      /* 테이블의 테두리를 하나로 합쳐지게 설정 */  
+      border-collapse: collapse; height: 200px; width: 300px;
+    }
+    #myTable td {
+      border: 1px solid black; text-align: center;
+    }
+  </style>
+  <h4>인라인엘리먼트 사용시</h4>
+  <!-- 
+  가로정렬시 text-align > left, center, right
+  세로정렬시 vertical-align > top, middle, bottom 
+  -->
+  <table id="myTable">
+    <tr>
+      <td style="vertical-align: top;">상단정렬</td>
+      <td style="vertical-align: middle;">중간정렬</td>
+      <td style="vertical-align: bottom;">하단정렬</td>
+    </tr>
+  </table>
+</body>
+</html>

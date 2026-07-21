@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C04Paragraph2.html</title>
+  <style>
+    .boRed{ border: 1px solid red;}
+    .boBlue{ border: 1px solid blue;} 
+    .boBlack{ border: 1px solid black;}
+    .box21{width: 200px; height: 100px;}
+  </style>
+</head>
+<body>
+  <style>
+    /*
+    line-height : 줄간격 설정을 위한 속성. 즉 라인사이의 간격을 띄우는데, 인라인과 블럭은
+      조금 다르게 설정된다. 
+    -블럭요소 : 컨텐츠의 영역 중 세로가 늘어나서 마치 줄간격이 생기는것처럼 보인다.
+    -인라인요소 : 컨텐츠의 영역은 변화가 없고, 지정된 크기만큼 줄간격이 생겨 벌어진다.  
+    */
+    .divLine > div {
+      border: 1px solid blue;
+    }
+    /* class가 divLine인 요소 하위에 첫번째 div를 선택 */
+    .divLine > div:first-child{
+      line-height: 4em;
+    }
+  </style>
+  <h2>줄간격 - 블럭엘리먼트</h2>
+  <div class="divLine">
+    <div>블럭엘리먼트1에 줄간격 적용</div>
+    <div>블럭엘리먼트2</div>
+    <div>블럭엘리먼트3</div>
+  </div>
+  <style>
+    .inline > span {
+      border: 1px solid black;
+    }
+    .inline > span:first-child {
+      line-height: 4em;
+    }
+  </style>
+  <h2>줄간격 - 인라인엘리먼트</h2>
+  <div class="inline">
+    <span>인라인엘리먼트1</span><br />
+    <span>인라인엘리먼트2</span><br />
+    <span>인라인엘리먼트3</span>
+  </div>
+
+
+  <h2>배분정렬</h2>
+  <!-- 각기 다른 길이의 단어를 사용함으로써 발생되는 우측의 불규칙적인 여백을 깔끔하게 정리
+   해준다. 보통 책을 편집할때 배분정렬이 사용된다. -->
+  <p style="text-align: justify;" class="boBlack">
+    건강검진에서 유방촬영술(맘모그래피)을 받은 뒤 '정상'이라는 결과를 들었는데도 추가로 유방초음파 검사를 권유받아 의아했던 경험이 있는 여성들이 적지 않다. 대부분은 "정상이라면 괜찮은 것 아닌가"라고 생각하지만, 치밀유방(Dense Breast)이라면 이야기가 달라질 수 있다. 치밀유방은 유방촬영술만으로는 작은 유방암을 발견하기 어려운 경우가 있어 최근에는 이를 보완하는 검사인 자동유방초음파(ABUS·Automated Breast Ultrasound System)가 주목받고 있다. <br>
+
+    우리나라 여성은 서양 여성보다 치밀유방 비율이 높은 것으로 알려져 있다. 특히 40~50대 여성의 절반 이상이 치밀유방에 해당하며, 젊은 여성일수록 그 비율은 더 높다. 치밀유방은 지방조직보다 유선조직과 섬유조직이 많은 상태를 말한다. 질환 자체는 아니지만 유방암 진단의 정확도에 영향을 줄 수 있는 중요한 특성이다. <br>
+
+    문제는 유방촬영술의 특성에 있다. 유방촬영술에서는 지방조직은 검게, 유선조직과 종양은 하얗게 보인다. 치밀유방에서는 정상 유선조직도 하얗게 나타나기 때문에 같은 색의 작은 종양이 주변 조직에 가려질 수 있다. 이를 흔히 '눈 속에서 흰 토끼를 찾는 것'에 비유하기도 한다. <br>
+
+    이 때문에 치밀유방이거나 유방암 위험요인이 있는 여성은 유방촬영술과 초음파 검사를 함께 시행하면 병변 발견에 도움이 될 수 있는 것으로 알려져 있다. 특히 유방초음파는 치밀한 유선조직 사이에 숨어 있는 작은 종괴를 찾아내는 데 장점이 있다. <br>
+
+    최근 도입이 확대되고 있는 ABUS는 기존 초음파의 장점을 유지하면서 검사 표준화와 재현성을 높인 검사법이다. 넓은 탐촉자로 유방 전체를 자동 촬영한 뒤 수천 장의 영상을 3차원으로 재구성해 의료진이 다양한 방향에서 병변을 확인할 수 있도록 한다. 검사자가 직접 탐촉자를 움직이는 일반 초음파보다 일정한 조건에서 촬영할 수 있어 검사 결과의 일관성을 높이는 데 도움이 된다. <br>
+  </p>
+
+
+  <h2>들여쓰기</h2>
+  <div style="text-indent: 2em;" class="boBlue">
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+  </div>
+
+  <div style="padding-left: 20px;" class="boRed">
+    <span style="text-indent: 50em;" class="boBlack">
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+    </span>
+  </div>
+</body>
+</html>
