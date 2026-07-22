@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C09DisplayVisibility2.html</title>
+  <style>
+    fieldset div {
+      width: 100px; height: 100px;
+      text-align: center; line-height: 100px;
+    }
+    .div1 {background-color: red;}
+    .div2 {background-color: blue;}
+    .div3 {background-color: green;}
+  </style>
+</head>
+<body>
+  <h2>block => inline으로 변경</h2>
+  <style>
+    /* 블럭 요소의 세로형 배치가 인라인 요소와 같이 가로형 배치로 변경된다. 또한 width, height
+    속상이 의미가 없어진다. */
+    fieldset.inline div {
+      display: inline;
+    }
+  </style>
+  <fieldset class="inline">
+    <legend>가로형 배치로 변경하기</legend>
+    <div class="div1">left</div>
+    <div class="div2">center</div>
+    <div class="div3">right</div>
+  </fieldset>
+  <h2>block => inline-block 으로 변경</h2>
+  <style>
+    /*
+    inline-block 속성은 인라인 요소처럼 가로형으로 배치되고, 블럭 요소처럼 width, height가 적용된다. 
+    */
+    fieldset.inline_block div {
+      display: inline-block;
+    }
+  </style>
+  <fieldset class="inline_block">
+    <legend>가로형 배치로 변경하기</legend>
+    <div class="div1">left</div>
+    <div class="div2">center</div>
+    <div class="div3">right</div>
+  </fieldset>
+
+  <h2>inline => block 으로 변경</h2>
+  <style>
+    /*
+    span태그는 대표적인 인라인 요소이지만 block 속성을 부여했으므로 블럭 요소처럼 세로형 배치로 변경한다.
+    또한 가로, 세로 크기를 지정할 수 있게된다. 
+    */
+    fieldset.block span{
+      display: block;
+    }
+    #spanLeft{
+      width: 150px; height: 150px;
+    }
+  </style>
+  <fieldset class="block">
+    <legend>세로형 배치로 변경하기</legend>
+    <span class="div1" id="spanLeft">left</span>
+    <span class="div2">center</span>
+    <span class="div3">right</span>
+  </fieldset>
+</body>
+</html>
