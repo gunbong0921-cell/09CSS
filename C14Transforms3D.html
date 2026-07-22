@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px; height:100px; text-align:center;
+            background-color:yellow; line-height:100px;
+            border:3px solid gray;
+        }
+        .c1{background-color: red;}
+        .c2{background-color: green;}
+        .c3{background-color: blue;}
+    </style>
+</head>
+<body>
+    <h2>3D transform</h2>
+    <div>
+        기본상자
+    </div>
+    
+    <h3>rotateX() - X축 회전</h3>
+    <style>
+        /* X축 방향으로 회전하되 3D형태로 돌아간다. 따라서 90deg가 되면
+        화면에서는 엘리먼트가 사라진것처럼 보인다. */
+        .box01{
+            transform: rotateX(120deg);
+        }
+    </style>    
+    <div class="box01 c1">
+        box01
+    </div>
+
+    <h3>rotateY() - Y축 회전</h3>
+    <style>
+        .box02{
+            transform: rotateY(150deg);
+        }
+    </style>    
+    <div class="box02 c2">
+        box02
+    </div>
+
+    <h3>rotateZ() - Z축 회전</h3>
+    <style>
+        .box03{
+            transform: rotateZ(150deg);
+        }
+    </style>    
+    <div class="box03 c3">
+        box03
+    </div>
+</body>
+</html>

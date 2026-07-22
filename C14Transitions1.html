@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C14Transitions1.html</title>
+  <style>
+    div{
+      width: 100px; height: 100px; text-align: center;
+      background-color: yellow; line-height: 100px;
+      border: 3px solid gray;
+    }
+    .c1{background-color: red;}
+    .c2{background-color: green;}
+    .c3{background-color: blue;}
+  </style>
+</head>
+<body>
+  <h2>Transition : 전환</h2>
+  <h3>transition 속성1</h3>
+  <style>
+    /*
+    transition은 지정된 시간동안 엘리먼트의 상태를 변화시켜 애니메이션 효과를 나타낸다.
+    형식] transition : 프로퍼티 전환시간
+      -> 부여된 시간동안 프로퍼티가 변경된다.
+    */
+    div.box01{
+      /* 배경색을 2초간 변경 */
+      transition: background-color 2s;
+    }
+    /* 마우스를 올리면 2초동안 배경색이 변한다. 단 지정하지 않은 글자색은 즉시 변한다. */
+    div.box01:hover{
+      background-color: black;
+      color: yellow;
+    }
+    /* 클릭했을때 변환 */
+    div.box01:active{
+      background-color: skyblue;
+      color: white;
+    }
+  </style>
+  <div class="box01">
+    box1
+  </div>
+
+  <h3>transition 속성2</h3>
+  <style>
+    div.box2{
+      /* 줄간격에 대해 시간을 적용하지 ㅇ낳으면 box2의 텍스트가 아래로 먼저 떨어져서 애니메이션이
+      부자연스럽게 적용된다. */
+      /* transition: width 2s, height 4s; */
+      /* 줄간격까지 지정하면 자연스럽게 변환된다. */
+      transition: width 2s, height 4s, line-height 4s;
+    }
+    div.box02:hover{
+      width: 300px;
+      height: 300px; line-height: 300px;
+    }
+  </style>
+  <div class="box02 c1">
+    box2
+  </div>
+
+  <h3>transition-timing-function 속성</h3>
+  <style>
+    /*
+    애니메이션의 적용 시간을 속도곡선(curve)으로 지정.
+    디폴트값은 ease로 지정된다. 
+    */
+    div.box3{
+      transition: width 2s;
+      /* liner, ease, ease-in, ease-out, ease-in-out */
+      transition-timing-function: ease;
+    }
+    div.box03:hover{
+      width: 300px;
+    }
+  </style>
+  <div class="box03 c2">
+    box3
+  </div>
+
+  <h3>transition-delay 속성</h3>
+  <style>
+    /*
+    transition-delay : 전환효과가 적용되기 전 대기시간 설정 
+    */
+    div.box04{
+      transition: transform 2s, width 2s, height 2s, line-height 2s;
+      /* 마우스 오버/아웃시 1초 이후 적용됨 */
+      transition-delay: 1s;
+    }
+    /* 마우스 오버시 180도 회전 적용 */
+    div.box04:hover{
+      transform: rotate(180deg);
+      width: 300px; height: 200px; line-height: 200px;
+    }
+  </style>
+  <div class="box04 c3">
+    box4
+  </div>
+</body>
+</html>

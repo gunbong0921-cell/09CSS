@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    div{
+        width:100px; height:100px; text-align:center;
+        line-height:100px; border:1px solid gray;
+    }
+    .c1{background-color: red;}
+    .c2{background-color: green;}
+    .c3{background-color: blue;}
+</style>
+<style>
+    /* 다중선택자를 통해 2개의 클래스를 선택한다. */
+    .rect1, .rect2{
+        /*
+        변형을 줄 CSS 속성 3가지를 묶어서 설정한다. 2개이상을 지정할때는
+        콤마로 구분하면 되고, 각각의 변형에 필요한 시간은 아래의 속성에서
+        지정하고 있다. 배경색 5초, 가로크기 1초, 세로크기 7초로 설정한다.
+        */
+        transition-property:background-color, width, height;
+        transition-duration:5s, 1s, 7s; 
+    }
+    .rect1:hover{
+        background-color:#076738;
+        width:300px; height:200px;
+    }
+    .rect2:hover{
+        background-color:#B40A0A;
+        width:200px; height:300px;
+    }    
+</style>
+</head>
+<body>
+    <h2>Transition : 전환</h2>
+    
+    <div class="rect1 c1">box1</div>
+    <div class="rect2 c2">box2</div>
+    <div class="c3">box3</div>
+</body>
+</html>

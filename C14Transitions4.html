@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    div{
+        width:100px; height:100px; 
+        text-align:center; line-height:100px;
+        /* 적용시간은 일괄적으로 2초로 설정한다. */
+        transition-duration:2s;  
+    }
+    .c1{background-color: red;}
+    .c2{background-color: green;}
+    .c3{background-color: blue;}
+</style>
+<style type="text/css">    
+    /*
+    opacity : Alpha(투명도)값을 지정한다. 0에 가까울수록 투명해지고,
+        1에 가까울수록 선명해진다. 
+    translateX : x축, 수평방향으로 이동한다. Y라면 수직방향으로 적용된다.
+    rotate : 시계방향으로 회전한다. 
+    scaleX : 수평방향으로 크기가 조정된다. 1보다 작으면 축소, 크면 확대된다.
+    */
+    div.trans1:hover{
+        background-color:red;		
+        opacity:0.4;
+        transform:translateX(400px) 
+                rotate(90deg) 
+                scaleX(0.1);
+    }
+    /*
+    x, y축 지정이 없는 함수인 경우 순서대로 x, y축으로 적용된다. 
+    rotate()의 경우 설정값이 음수이면 반시계 방향으로 회전한다. 
+    */
+    div.trans2:hover{
+        background-color:green;
+        transform:translate(400px, 100px)
+            scale(1.5, 1.5)
+            rotate(-180deg);
+    }
+    /*  3D 효과가 적용된 상태로 회전한다. x, y, z는 회전을 위한 축이된다. 
+    rotate3d() : 엘리먼트가 뒤틀린 효과가 적용되면서 회전한다. */
+    div.trans3:hover{
+        /* transform:rotateX(360deg); */
+        /* transform:rotateY(360deg); */
+        /* transform:rotateZ(360deg); */
+
+        /* 형식 : rotate3d(x, y, z, angle) */
+        transform:rotate3d(2,0,0,320deg);
+    }
+</style>
+</head>
+<body>
+    <h2>Transition : 전환</h2>
+	
+	<div class="trans1 c1">
+		box1
+	</div>
+	<div class="trans2 c2">
+		box2
+	</div>
+    <div class="trans3 c3">
+		box3
+	</div>
+</body>
+</html>

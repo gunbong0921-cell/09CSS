@@ -1,196 +1,471 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
 <style>
+  /* ───────────────────────────────────────────
+     CSS Custom Properties (Design Tokens)
+     ─────────────────────────────────────────── */
+  :root {
+    /* Colors */
+    --color-lcd-bg:        #70C738;
+    --color-lcd-text:      #333333;
+    --color-btn-gray:      #7c7c7c;
+    --color-btn-dark:      #373737;
+    --color-btn-orange:    #FA960A;
+    --color-calc-bg:       #dddddd;
+    --color-page-bg:       #ffffff;
+    --color-text:          #333333;
+
+    /* Spacing */
+    --space-xs:  4px;
+    --space-sm:  8px;
+    --space-md:  12px;
+    --space-lg:  15px;
+    --space-xl:  20px;
+
+    /* Sizing */
+    --calc-width:     320px;
+    --btn-height:     55px;
+    --lcd-min-height: 50px;
+
+    /* Typography */
+    --font-family:   'Segoe UI', 'Apple SD Gothic Neo', Arial, sans-serif;
+    --font-size-lcd: 36px;
+    --font-size-btn: 20px;
+    --font-size-title: 24px;
+    --font-size-sub:   14px;
+    --font-weight-bold: bold;
+
+    /* Effects */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow:    0 4px 12px rgba(0, 0, 0, 0.2);
+    --transition-fast: transform 0.1s ease, opacity 0.2s ease;
+  }
+
+  /* ───────────────────────────────────────────
+     Reset & Base
+     ─────────────────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
+    font-family: var(--font-family);
+    background: var(--color-page-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--space-xl);
+  }
+
+  /* ───────────────────────────────────────────
+     Calculator Container
+     ─────────────────────────────────────────── */
+  .calculator {
+    --_bg: var(--color-calc-bg);
+    --_width: var(--calc-width);
+
+    background: var(--_bg);
+    width: min(100%, var(--_width));
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  /* ───────────────────────────────────────────
+     Header
+     ─────────────────────────────────────────── */
+  .calculator__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .calculator__title {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .calculator__subtitle {
+    font-size: var(--font-size-sub);
+    color: var(--color-text);
+  }
+
+  /* ───────────────────────────────────────────
+     LCD Display
+     ─────────────────────────────────────────── */
+  .calculator__display {
+    --_bg:   var(--color-lcd-bg);
+    --_text: var(--color-lcd-text);
+
+    background: var(--_bg);
+    color: var(--_text);
+    font-size: var(--font-size-lcd);
+    font-weight: var(--font-weight-bold);
+    text-align: right;
+    padding: var(--space-lg) var(--space-xl);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    min-height: var(--lcd-min-height);
+    word-break: break-all;
+    letter-spacing: 2px;
+    overflow-wrap: break-word;
+  }
+
+  /* ───────────────────────────────────────────
+     Keypad Layout
+     ─────────────────────────────────────────── */
+  .calculator__keypad {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    padding: 20px;
-    background: #fff;
+    gap: var(--space-sm);
   }
-  .calc-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  .calc-subtitle {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  .calculator {
-    background: #dddddd;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    width: 320px;
-  }
-  .lcd {
-    background: #70C738;
-    color: #333;
-    font-size: 36px;
-    text-align: right;
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    min-height: 50px;
-    word-break: break-all;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-  .btn-row {
+
+  .calculator__row {
     display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: var(--space-sm);
   }
+
+  /* ───────────────────────────────────────────
+     Button Component
+     ─────────────────────────────────────────── */
   .btn {
-    flex: 1;
-    height: 55px;
+    --_bg:    var(--color-btn-dark);
+    --_text:  #ffffff;
+    --_flex:  1;
+
+    flex: var(--_flex);
+    height: var(--btn-height);
     border: none;
-    border-radius: 6px;
-    font-size: 20px;
-    font-weight: bold;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-btn);
+    font-weight: var(--font-weight-bold);
+    font-family: inherit;
+    color: var(--_text);
+    background: var(--_bg);
     cursor: pointer;
-    transition: transform 0.1s, opacity 0.2s;
-    color: white;
+    transition: var(--transition-fast);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  .btn:hover {
+    opacity: 0.9;
+  }
+
   .btn:active {
     transform: scale(0.95);
   }
-  .btn-gray {
-    background: #7c7c7c;
-    flex: 1;
+
+  /* Button Modifiers */
+  .btn--gray {
+    --_bg: var(--color-btn-gray);
   }
-  .btn-dark {
-    background: #373737;
-    flex: 1;
+
+  .btn--orange {
+    --_bg: var(--color-btn-orange);
   }
-  .btn-orange {
-    background: #FA960A;
-    flex: 1;
+
+  .btn--wide {
+    --_flex: 2;
   }
-  .btn-wide {
-    flex: 2;
+
+  /* ───────────────────────────────────────────
+     Responsive
+     ─────────────────────────────────────────── */
+  @media (max-width: 400px) {
+    :root {
+      --calc-width: 100%;
+      --btn-height: 60px;
+      --font-size-lcd: 32px;
+      --font-size-btn: 22px;
+    }
+
+    .calculator {
+      padding: var(--space-sm);
+    }
+  }
+
+  /* ───────────────────────────────────────────
+     Accessibility: Focus Visible
+     ─────────────────────────────────────────── */
+  .btn:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+  }
+
+  /* ───────────────────────────────────────────
+     Dark Mode Support (Optional)
+     ─────────────────────────────────────────── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-page-bg: #1a1a1a;
+      --color-text:    #e0e0e0;
+    }
   }
 </style>
-<base target="_blank">
 </head>
 <body>
-  <div class="calc-title">계산기</div>
-  <div class="calc-subtitle">파일명:calculator.html</div>
 
-  <div class="calculator">
-    <div class="lcd" id="display">0</div>
+  <!-- Calculator Component -->
+  <article class="calculator" aria-label="계산기">
 
-    <div class="btn-row">
-      <button class="btn btn-gray btn-wide" onclick="backspace()">BackSpace</button>
-      <button class="btn btn-gray btn-wide" onclick="clearAll()">C</button>
-    </div>
+    <!-- Header -->
+    <header class="calculator__header">
+      <h1 class="calculator__title">계산기</h1>
+      <p class="calculator__subtitle">파일명: calculator.html</p>
+    </header>
 
-    <div class="btn-row">
-      <button class="btn btn-dark" onclick="appendNum('1')">1</button>
-      <button class="btn btn-dark" onclick="appendNum('2')">2</button>
-      <button class="btn btn-dark" onclick="appendNum('3')">3</button>
-      <button class="btn btn-orange" onclick="setOp('/')">/</button>
-    </div>
+    <!-- LCD Display -->
+    <output
+      class="calculator__display"
+      id="js-display"
+      aria-live="polite"
+      aria-atomic="true"
+    >0</output>
 
-    <div class="btn-row">
-      <button class="btn btn-dark" onclick="appendNum('4')">4</button>
-      <button class="btn btn-dark" onclick="appendNum('5')">5</button>
-      <button class="btn btn-dark" onclick="appendNum('6')">6</button>
-      <button class="btn btn-orange" onclick="setOp('*')">x</button>
-    </div>
+    <!-- Keypad -->
+    <section class="calculator__keypad" aria-label="키패드">
 
-    <div class="btn-row">
-      <button class="btn btn-dark" onclick="appendNum('7')">7</button>
-      <button class="btn btn-dark" onclick="appendNum('8')">8</button>
-      <button class="btn btn-dark" onclick="appendNum('9')">9</button>
-      <button class="btn btn-orange" onclick="setOp('+')">+</button>
-    </div>
+      <!-- Row 1: BackSpace, C -->
+      <div class="calculator__row">
+        <button class="btn btn--gray btn--wide" data-action="backspace" aria-label="한 글자 지우기">BackSpace</button>
+        <button class="btn btn--gray btn--wide" data-action="clear" aria-label="모두 지우기">C</button>
+      </div>
 
-    <div class="btn-row">
-      <button class="btn btn-dark" onclick="calculate()">=</button>
-      <button class="btn btn-dark" onclick="appendNum('0')">0</button>
-      <button class="btn btn-dark" onclick="appendNum('.')">.</button>
-      <button class="btn btn-orange" onclick="setOp('-')">-</button>
-    </div>
-  </div>
+      <!-- Row 2: 1, 2, 3, / -->
+      <div class="calculator__row">
+        <button class="btn" data-value="1">1</button>
+        <button class="btn" data-value="2">2</button>
+        <button class="btn" data-value="3">3</button>
+        <button class="btn btn--orange" data-op="/" aria-label="나누기">/</button>
+      </div>
+
+      <!-- Row 3: 4, 5, 6, x -->
+      <div class="calculator__row">
+        <button class="btn" data-value="4">4</button>
+        <button class="btn" data-value="5">5</button>
+        <button class="btn" data-value="6">6</button>
+        <button class="btn btn--orange" data-op="*" aria-label="곱하기">x</button>
+      </div>
+
+      <!-- Row 4: 7, 8, 9, + -->
+      <div class="calculator__row">
+        <button class="btn" data-value="7">7</button>
+        <button class="btn" data-value="8">8</button>
+        <button class="btn" data-value="9">9</button>
+        <button class="btn btn--orange" data-op="+" aria-label="더하기">+</button>
+      </div>
+
+      <!-- Row 5: =, 0, ., - -->
+      <div class="calculator__row">
+        <button class="btn" data-action="calculate" aria-label="계산하기">=</button>
+        <button class="btn" data-value="0">0</button>
+        <button class="btn" data-value=".">.</button>
+        <button class="btn btn--orange" data-op="-" aria-label="빼기">-</button>
+      </div>
+
+    </section>
+  </article>
 
 <script>
-  let current = '0';
-  let prev = null;
-  let op = null;
-  let resetNext = false;
-  const display = document.getElementById('display');
+  /* ═══════════════════════════════════════════
+     Calculator Module (IIFE Pattern)
+     ═══════════════════════════════════════════ */
+  const Calculator = (() => {
+    'use strict';
 
-  function updateDisplay() {
-    display.textContent = current;
-  }
+    // ── Private State ─────────────────────────
+    const state = {
+      current:   '0',
+      previous:  null,
+      operator:  null,
+      resetNext: false,
+    };
 
-  function appendNum(n) {
-    if (resetNext) {
-      current = n === '.' ? '0.' : n;
-      resetNext = false;
-    } else {
-      if (current === '0' && n !== '.') {
-        current = n;
-      } else if (n === '.' && current.includes('.')) {
-        return;
-      } else {
-        current += n;
+    // ── DOM References ────────────────────────
+    const displayEl = document.getElementById('js-display');
+
+    // ── Constants ─────────────────────────────
+    const MAX_DIGITS = 15;
+    const ERROR_MSG  = 'Error';
+
+    // ── Private Methods ───────────────────────
+    function updateDisplay() {
+      displayEl.textContent = state.current;
+    }
+
+    function isError() {
+      return state.current === ERROR_MSG;
+    }
+
+    function clearError() {
+      if (isError()) {
+        state.current = '0';
+        state.previous = null;
+        state.operator = null;
+        state.resetNext = false;
       }
     }
-    updateDisplay();
-  }
 
-  function setOp(operator) {
-    if (op !== null && !resetNext) {
-      calculate();
+    function formatResult(value) {
+      const str = String(value);
+      if (str.length > MAX_DIGITS) {
+        return parseFloat(value.toPrecision(MAX_DIGITS));
+      }
+      return str;
     }
-    prev = parseFloat(current);
-    op = operator;
-    resetNext = true;
-  }
 
-  function calculate() {
-    if (op === null || prev === null) return;
-    const now = parseFloat(current);
-    let result;
-    switch (op) {
-      case '+': result = prev + now; break;
-      case '-': result = prev - now; break;
-      case '*': result = prev * now; break;
-      case '/': result = now === 0 ? 'Error' : prev / now; break;
-      default: return;
-    }
-    current = String(result);
-    prev = null;
-    op = null;
-    resetNext = true;
-    updateDisplay();
-  }
+    // ── Public Methods ────────────────────────
+    const actions = {
 
-  function clearAll() {
-    current = '0';
-    prev = null;
-    op = null;
-    resetNext = false;
-    updateDisplay();
-  }
+      /** 숫자 또는 소수점 입력 */
+      input(value) {
+        clearError();
 
-  function backspace() {
-    if (current.length > 1) {
-      current = current.slice(0, -1);
-    } else {
-      current = '0';
-    }
-    updateDisplay();
-  }
+        if (state.resetNext) {
+          state.current = value === '.' ? '0.' : value;
+          state.resetNext = false;
+          updateDisplay();
+          return;
+        }
+
+        if (state.current === '0' && value !== '.') {
+          state.current = value;
+        } else if (value === '.' && state.current.includes('.')) {
+          return; // 소수점 중복 방지
+        } else if (state.current.replace('.', '').length >= MAX_DIGITS) {
+          return; // 최대 자릿수 초과 방지
+        } else {
+          state.current += value;
+        }
+
+        updateDisplay();
+      },
+
+      /** 연산자 설정 */
+      setOperator(op) {
+        clearError();
+
+        if (state.operator !== null && !state.resetNext) {
+          this.calculate();
+        }
+
+        state.previous = parseFloat(state.current);
+        state.operator = op;
+        state.resetNext = true;
+      },
+
+      /** 계산 실행 */
+      calculate() {
+        if (state.operator === null || state.previous === null) return;
+
+        const currentVal = parseFloat(state.current);
+        let result;
+
+        switch (state.operator) {
+          case '+': result = state.previous + currentVal; break;
+          case '-': result = state.previous - currentVal; break;
+          case '*': result = state.previous * currentVal; break;
+          case '/':
+            result = currentVal === 0 ? ERROR_MSG : state.previous / currentVal;
+            break;
+          default: return;
+        }
+
+        state.current   = result === ERROR_MSG ? ERROR_MSG : formatResult(result);
+        state.previous  = null;
+        state.operator  = null;
+        state.resetNext = true;
+        updateDisplay();
+      },
+
+      /** 전체 초기화 (C) */
+      clear() {
+        state.current   = '0';
+        state.previous  = null;
+        state.operator  = null;
+        state.resetNext = false;
+        updateDisplay();
+      },
+
+      /** 한 글자 지우기 (BackSpace) */
+      backspace() {
+        clearError();
+
+        if (state.resetNext) {
+          state.current = '0';
+          state.resetNext = false;
+        } else if (state.current.length > 1) {
+          state.current = state.current.slice(0, -1);
+        } else {
+          state.current = '0';
+        }
+
+        updateDisplay();
+      },
+    };
+
+    return actions;
+  })();
+
+
+  /* ═══════════════════════════════════════════
+     Event Delegation Handler
+     ═══════════════════════════════════════════ */
+  (function initEvents() {
+    const keypad = document.querySelector('.calculator__keypad');
+
+    keypad.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn');
+      if (!btn) return;
+
+      const { value, op, action } = btn.dataset;
+
+      if (value !== undefined) {
+        Calculator.input(value);
+      } else if (op !== undefined) {
+        Calculator.setOperator(op);
+      } else if (action) {
+        Calculator[action]();
+      }
+    });
+
+    // ── Keyboard Support ──────────────────────
+    document.addEventListener('keydown', (e) => {
+      const key = e.key;
+
+      if (/^[0-9.]$/.test(key)) {
+        e.preventDefault();
+        Calculator.input(key);
+      } else if (['+', '-', '*', '/'].includes(key)) {
+        e.preventDefault();
+        Calculator.setOperator(key);
+      } else if (key === 'Enter' || key === '=') {
+        e.preventDefault();
+        Calculator.calculate();
+      } else if (key === 'Backspace') {
+        e.preventDefault();
+        Calculator.backspace();
+      } else if (key === 'Escape' || key === 'c' || key === 'C') {
+        e.preventDefault();
+        Calculator.clear();
+      }
+    });
+  })();
 </script>
+
 </body>
 </html>
+
+

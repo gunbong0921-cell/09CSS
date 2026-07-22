@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C14Transitions2.html</title>
+  <style>
+    /*
+    기본상태의 사각형 설정. 트랜지션이 적용도리 시간을 3초로 지정. 
+    */
+    #rect{
+      width: 150px; height: 150px;
+      line-height: 150px; background-color: red;
+      text-align: center;
+      transition-duration: 3s;
+    }
+    /* 마우스 오버시의 상태. 가로, 세로, 폰트를 확대. */
+    #rect:hover {
+      width: 300px; height: 300px;
+      line-height: 300px; background-color: green;
+      font-size: 2em;
+    } 
+    /* 마우스 클릭시에는 사각형을 원으로 변형 */
+    #rect:active{
+      width: 250px; height: 250px;
+      line-height: 250px; background-color: blue;
+      border-radius: 125px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Transform(변형1)</h2> 
+
+  <div id="rect">
+    나는 사각형
+  </div>
+</body>
+</html>

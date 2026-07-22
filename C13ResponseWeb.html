@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    /* 젅체선택자로 마진과 패딩, 기본포트 설정 */
     *{margin:0px; padding:0; font-family:verdana;}
     #AllWrap{
         margin:0 auto; text-align:center;
@@ -20,6 +21,16 @@
         list-style:none;
         overflow:hidden;
     }
+    /*
+    overflow : 박스안의 컨텐츠를 아래와 같이 처리
+    visible : 디폴트값, 박스를 넘어가더라도 텍스트를 보임처리
+    hidden : 박스를 벗어난 부분은 숨김처리
+    auto : 컨텐츠의 크기를 감지하여 스크롤바를 자동으로 생성 
+    */
+    /*
+    float:left를 통해 li태그를 메뉴처럼 보이도록 가로형으로 배치. box-sizing:border-box;를 통해 
+    전체사이즈를 정확한 100%로 설정. 이 부분을 삭제하면 메뉴5는 아래로 떨어진다.
+    */
     #nav ul li{
         font-size:1.5em; font-weight:bold; height:50px;
         width:20%; float:left; border:1px solid blue;
@@ -38,18 +49,32 @@
         line-height:100px; text-align:center;
         border:1px solid blue;
     }
+    /*
+    반응형탭을 구현하기 위해 미디어쿼리를 사용한다. 디바이스의 화면크기에 따라 다른 형태의 스타일을 
+    적용한다. 이렇게 제작하면 모바일용 웹페이지를 별도로 제작하지 않아도 된다. 
+    */
+    /*
+    스크린의 크기가 640px 이하일때의 화면설정. 폰트사이즈를 기본폰트의 2배 크기로 설정한다. 모바일웹은
+    화면 자체가 작기때문에 폰트를 크게 설정해야한다. 
+    */
     @media screen and (max-width:640px){
         #AllWrap{ width:100%; }
         #content p{
             font-size:2em; color:black;
         }
     } 
+    /*
+    1000px 이상일때의 화면설정. 주로 모니터(PC웹)를 통해 보게되므로 기본폰트인 16px(1em)으로 설정한다. 
+    */
     @media screen and (min-width:1000px){
         #AllWrap{ width:80%; }
         #content p{
             font-size:1em; color:green;
         }
     }
+    /*
+    641~999px 사이의 화면설정으로 태블릿PC 정도의 화면이 된다. 
+    */
     @media screen and (min-width:641px) and (max-width:999px){
         #AllWrap{ width:100%; }
         #content p{

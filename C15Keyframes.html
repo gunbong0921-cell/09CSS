@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C15Keyframes.html</title>
+  <style>
+    div{
+      width: 100px; height: 100px; text-align: center;
+      background-color: yellow; line-height: 100px;
+      border: 3px solid gray;
+    }
+    .c1{background-color: red;}
+    .c2{background-color: green;}
+    .c3{background-color: blue;}
+  </style>
+</head>
+<body>
+  <h2>Animations : 애니메이션</h2>
+  <h3>@keyframes 1</h3>
+  <style>
+    /*
+    @keyframes을 이용한 애니메이션 : from, to를 이용해서 시작과 종료상태를 설정할 수 있다.
+      만약 좀더 상세한 상태를 적용하고 싶다면 %단위를 이용해서 2개 이상의 중간상태를 지정할 수 
+      있다. 
+    */
+    div.box01{
+      /* 키프레임의 이름 지정 */
+      animation-name: ani1;
+      /* 애니메이션이 진행될 시간을 초단위로 지정 */
+      animation-duration: 4s;
+    }
+    @keyframes ani1 {
+      /* from은 시작상태. 0%와 동일 */
+      from {background-color: red;}
+      /* to는 종료상태. 100%와 동일 */
+      to {background-color: yellow;}
+    }
+  </style>
+  <div class="box01">
+    box1
+  </div>
+  <h3>@keyframes 2</h3>
+  <style>
+    /* 엘리먼트의 위치 변경을 위해 position 속성을 지정.
+    static인 경우에는 위치를 변경할 수 없다. */
+    div.box02{
+      position: relative;
+      animation-name: ani2;
+      animation-duration: 4s;
+      /* 애니메이션의 반복 횟수 지정 */
+      animation-iteration-count: 2;
+      /* 
+      애니메이션 종료 후 재시작 방향을 설정
+        normal : 정상적으로 재생(디폴트 값)
+        reverse : 역방향으로 재생
+        alternate : 앞으로 재생된 후 뒤로 재생
+        alternate-reverse : 뒤로 먼저 재생된 후 앞으로 재생됨 
+      */
+      animation-direction: alternate;
+      margin-bottom: 100px;
+    }
+    /*
+    from과 to는 0%와 100%를 의미하고, 중간상태를 추가로 삽입하고 싶을때는 아래와 %형태로
+    설정하면된다. 
+    */
+    @keyframes ani2 {
+      0% {background-color: red; left: 0px; top: 0px;}
+      25% {background-color: yellow; left: 100px; top: 0px;}
+      50% {background-color: blue; left: 100px; top: 100px;}
+      75% {background-color: green; left: 0px; top: 100px;}
+      100% {background-color: red; left: 0px; top: 0px;}
+    }
+  </style>
+  <div class="box02">
+    box2
+  </div>
+
+  <h3>@keyframes 3</h3>
+  <style>
+    div.circle{
+      border-radius: 50px; position: relative;
+      animation-duration: 4s;
+      animation-name: ani3;
+      /* 무한반복 설정 */
+      animation-iteration-count: infinite;
+      animation-direction: alternate-reverse;
+    }
+    div.circle:hover{
+      /* 엘리먼트에 마우스를 올리면 일시정지 */
+      animation-play-state: paused;
+    }
+    @keyframes ani3{
+      from{
+        left: 0; width: 100px; height: 100px;
+        line-height: 100px; border-radius: 50px;
+        transform: rotate(0deg);
+        font-size: 1.5em;
+      }
+      to{
+        left: 400px; width: 200px; height: 200px;
+        line-height: 200px; border-radius: 100px;
+        transform: rotate(180deg);
+        font-size: 2.5em;
+        background-color: blueviolet;
+      }
+    }
+  </style>
+  <div class="circle">
+    circle
+  </div>
+</body>
+</html>
