@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator2</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+    background: #fff;
+  }
+  .calc-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .calc-subtitle {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  .calculator {
+    background: #dddddd;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 320px;
+  }
+  .lcd {
+    background: #70C738;
+    color: #333;
+    font-size: 36px;
+    text-align: right;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    min-height: 50px;
+    word-break: break-all;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .btn-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .btn {
+    flex: 1;
+    height: 55px;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    color: white;
+  }
+  .btn:active {
+    transform: scale(0.95);
+  }
+  .btn-gray {
+    background: #7c7c7c;
+    flex: 1;
+  }
+  .btn-dark {
+    background: #373737;
+    flex: 1;
+  }
+  .btn-orange {
+    background: #FA960A;
+    flex: 1;
+  }
+  .btn-wide {
+    flex: 2;
+  }
+</style>
+<base target="_blank">
+</head>
+<body>
+  <div class="calc-title">계산기</div>
+  <div class="calc-subtitle">파일명:calculator.html</div>
+
+  <div class="calculator">
+    <div class="lcd" id="display">0</div>
+
+    <div class="btn-row">
+      <button class="btn btn-gray btn-wide" onclick="backspace()">BackSpace</button>
+      <button class="btn btn-gray btn-wide" onclick="clearAll()">C</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-dark" onclick="appendNum('1')">1</button>
+      <button class="btn btn-dark" onclick="appendNum('2')">2</button>
+      <button class="btn btn-dark" onclick="appendNum('3')">3</button>
+      <button class="btn btn-orange" onclick="setOp('/')">/</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-dark" onclick="appendNum('4')">4</button>
+      <button class="btn btn-dark" onclick="appendNum('5')">5</button>
+      <button class="btn btn-dark" onclick="appendNum('6')">6</button>
+      <button class="btn btn-orange" onclick="setOp('*')">x</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-dark" onclick="appendNum('7')">7</button>
+      <button class="btn btn-dark" onclick="appendNum('8')">8</button>
+      <button class="btn btn-dark" onclick="appendNum('9')">9</button>
+      <button class="btn btn-orange" onclick="setOp('+')">+</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-dark" onclick="calculate()">=</button>
+      <button class="btn btn-dark" onclick="appendNum('0')">0</button>
+      <button class="btn btn-dark" onclick="appendNum('.')">.</button>
+      <button class="btn btn-orange" onclick="setOp('-')">-</button>
+    </div>
+  </div>
+
+<script>
+  let current = '0';
+  let prev = null;
+  let op = null;
+  let resetNext = false;
+  const display = document.getElementById('display');
+
+  function updateDisplay() {
+    display.textContent = current;
+  }
+
+  function appendNum(n) {
+    if (resetNext) {
+      current = n === '.' ? '0.' : n;
+      resetNext = false;
+    } else {
+      if (current === '0' && n !== '.') {
+        current = n;
+      } else if (n === '.' && current.includes('.')) {
+        return;
+      } else {
+        current += n;
+      }
+    }
+    updateDisplay();
+  }
+
+  function setOp(operator) {
+    if (op !== null && !resetNext) {
+      calculate();
+    }
+    prev = parseFloat(current);
+    op = operator;
+    resetNext = true;
+  }
+
+  function calculate() {
+    if (op === null || prev === null) return;
+    const now = parseFloat(current);
+    let result;
+    switch (op) {
+      case '+': result = prev + now; break;
+      case '-': result = prev - now; break;
+      case '*': result = prev * now; break;
+      case '/': result = now === 0 ? 'Error' : prev / now; break;
+      default: return;
+    }
+    current = String(result);
+    prev = null;
+    op = null;
+    resetNext = true;
+    updateDisplay();
+  }
+
+  function clearAll() {
+    current = '0';
+    prev = null;
+    op = null;
+    resetNext = false;
+    updateDisplay();
+  }
+
+  function backspace() {
+    if (current.length > 1) {
+      current = current.slice(0, -1);
+    } else {
+      current = '0';
+    }
+    updateDisplay();
+  }
+</script>
+</body>
+</html>

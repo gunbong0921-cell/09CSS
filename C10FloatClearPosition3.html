@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C10FloatClearPosition3.html</title>
+</head>
+<body>
+  <style>
+    /*
+    스티키처럼 상단에 box를 붙일때 사용하는 속성 한국에서 주로 사용하는 크롬, 엣지와 외국에서 사용하는 오페라, 사파리
+    등의 웹브라우저는 서로 사용하는 엔진이 달라 같은CSS속성이라도 다르게 표현될 수 있다. 크로스 브라우징을 위해 몇가지
+    접두어가 존재한다.
+    -webkit- : 크롬, 사파리에 적용
+    -moz- : 파이어폭스
+    -ms- : 익스플로러(현재는 거의 사용하지 않음)
+    -o- : 오페라
+    */
+    div.sticky {
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0; padding: 10px; text-align: center;
+      background-color: #cae8ca;
+      border: 2px solid#4CAF50;
+    }
+  </style>
+  <p>스티키 상단 영역</p>
+
+  <div class="sticky">sticky 박스</div>
+
+  <div>
+    <p>
+      이번 조정 계획의 핵심은 공장의 시간당 생산량을 뜻하는 UPH를 기존 55대에서 45대로 18.2% 줄이는 것이다. <br>
+      르노는 생산량 조정에 따라 유휴 인력이 발생할 것으로 보고 생산직원을 전환 배치하는 방안도 함께 검토하고 있다. <br>
+      사측이 구체적인 조정 규모를 통보하지는 않았지만 업계에서는 200여 명이 조정 대상이 오를 것이라는 관측이 나온다. <br>
+      이는 르노 부산공장 전체 생산직의 약 10% 수준이다.
+    </p>
+    <p style="margin-top: 1000px;">
+      르노가 생산 조정에 나선 것은 올 들어 판매 부진이 심화하고 있기 때문이다. <br>
+      르노의 올 상반기 국내외 판매량은 4만 7027대로 전년 동기 대비 29%나 급감했다. <br>
+      지난해 선보인 주력 차종 ‘그랑 콜레오스’의 신차 효과가 떨어진 데다 올해 3월 출시한 ‘필랑트’의 판매 실적도 기대치를 밑돈 영향이다.
+    </p>
+  </div>
+
+  <style>
+    /*
+    fixed 속성값은 웹브라우저의 특정 위치에 레이어를 고정하고 싶을때 사용. 이것을 사용하면 스크롤에 영향을 받지 않는다.
+    */
+    div.fixed {
+      position: fixed;
+      /* 우측 하단에 박스를 고정 */
+      bottom: 0; right: 0;
+      width: 100px; text-align: center;
+      height: 100px; line-height: 100px;
+      background-color: #cae8ca;
+      border: 2px solid #4CAF50;
+    }
+  </style>
+
+  <div class="fixed">
+    fixed 박스
+  </div>
+
+  <br><br><br><br><br><br><br><br><br>
+</body>
+</html>
