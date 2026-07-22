@@ -15,12 +15,13 @@
     body {
       display: flex;
       justify-content: center;
+      align-items: center; /* 세로 중앙 정렬 추가 */
       min-height: 100vh;
-      background-color: white;
+      background-color: #f5f5f5;
     }
 
     .calculator {
-      width: 450px;
+      width: 400px; /* 불필요하게 넓은 너비를 살짝 조절 */
       background-color: #dddddd;
       padding: 20px;
       border-radius: 15px;
@@ -53,7 +54,7 @@
       font-size: 1.25rem;
       font-weight: bold;
       color: white;
-      padding: 18px;
+      padding: 18px 0;
       cursor: pointer;
       transition: opacity 0.1s ease;
     }
@@ -63,8 +64,12 @@
     }
 
     .btn-utility {
-      grid-column: span 2;
       background-color: #7c7c7c;
+    }
+
+    /* BackSpace 텍스트가 짤리지 않도록 span 2 유지 혹은 글자 크기 조절 */
+    .btn-bs {
+      grid-column: span 2; 
     }
 
     .btn-number {
@@ -79,12 +84,36 @@
 <body>
   <div class="calculator">
     <div class="grid-container">
-      <div class="lcd">123+654</div>
+      <div class="lcd">123,456,789,123,456</div>
 
-      <button class="btn-utility">BackSpace</button>
+      <!-- 첫 번째 줄: 유틸리티 버튼 -->
+      <button class="btn-utility btn-bs">BackSpace</button>
       <button class="btn-utility">C</button>
+      <button class="btn-operator">/</button>
 
+      <!-- 두 번째 줄: 7, 8, 9, x -->
+      <button class="btn-number">7</button>
+      <button class="btn-number">8</button>
+      <button class="btn-number">9</button>
+      <button class="btn-operator">x</button>
 
+      <!-- 세 번째 줄: 4, 5, 6, - -->
+      <button class="btn-number">4</button>
+      <button class="btn-number">5</button>
+      <button class="btn-number">6</button>
+      <button class="btn-operator">-</button>
+
+      <!-- 네 번째 줄: 1, 2, 3, + -->
+      <button class="btn-number">1</button>
+      <button class="btn-number">2</button>
+      <button class="btn-number">3</button>
+      <button class="btn-operator">+</button>
+
+      <!-- 다섯 번째 줄: 0, ., = -->
+      <button class="btn-number">0</button>
+      <button class="btn-number">.</button>
+      <!-- = 버튼을 강조하기 위해 operator 색상 적용 및 남은 2칸 차지 -->
+      <button class="btn-operator" style="grid-column: span 2;">=</button>
     </div>
   </div>
 </body>
