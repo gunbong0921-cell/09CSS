@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C17Flex01.html</title>
+  <style>
+    /*
+    flex container 기본설정
+      display:flex; 로 설정하면 컨테이너 내부의 엘리먼트는 fiexbox 레이아웃을 가지게 된다.
+      flex-direction 속성은 주축(Main axis)을 설정한다. 
+      row : 디폴트값으로 아이템을 왼쪽 -> 오른쪽 방향으로 배치
+        (수평방향)
+      column : 위 -> 아래 방향으로 배치(수직방향)   
+    */
+    .container {
+      display: flex; /* 플렉스 컨테이너로 지정 */
+      /*
+      item들은 물리적으로 A,B,C 순서로 정렬되어 있지만 reverse 속성값을 부여하면 C,B,A 순서로 
+      뒤집어져 정렬된다. 
+      */
+      flex-direction: row-reverse; /* 방향설정 : row, column */
+      border: 2px solid #333; padding: 10px;
+    }
+    .item {
+      width: 60px; height: 60px; background-color: lightblue;
+      margin: 5px; text-align: center; line-height: 60px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flexbox-기본방향</h2>
+  <div class="container">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+</body>
+</html>
