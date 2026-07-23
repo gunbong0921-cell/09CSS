@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 폼 제작</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* 사진 속 외부 회색 큰 테두리 상자 */
+        .login-outer-box {
+            width: 700px;
+            height: 400px;
+            border: 1px solid #c8c8c8;
+            background-color: #fff;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* 상단 LOGIN 타이틀 이미지 영역 */
+        .login-logo {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .login-logo img {
+            width: 210px;
+            height: auto;
+            display: block;
+        }
+
+        /* 입력창과 버튼을 묶는 메인 폼 컨테이너 */
+        .login-main-form {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* 아이디, 패스워드 입력란을 세로로 묶는 영역 */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* 아이디 & 비밀번호 인풋 스타일 */
+        .input-style {
+            width: 350px;
+            height: 52px;
+            border: 1px solid #a3a3a3;
+            padding: 0 15px;
+            font-size: 18px;
+            color: #333;
+            box-sizing: border-box;
+        }
+        .input-style::placeholder {
+            color: #7c7c7c;
+        }
+
+        /* 우측 로그인 버튼 스타일 (사진 속 라운딩과 붉은 색상 반영) */
+        .login-btn {
+            width: 115px;
+            background-color: #c62931; /* 사진 속 선명한 적색 계열 */
+            color: #fff;
+            border: 1px solid #b22027;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .login-btn:hover {
+            background-color: #a81e25;
+        }
+
+        /* 하단 안내 및 이동 버튼 영역 */
+        .login-footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 480px; /* 위 폼 요소들의 전체 가로 너비와 정렬 유지 */
+            font-size: 13px;
+            color: #666e75;
+            font-weight: bold;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 빨간색 '>' 화살표 기호 스타일 */
+        .link-item span.arrow {
+            color: #c62931;
+            font-weight: 900;
+            margin-right: 2px;
+        }
+
+        /* GO 버튼 이미지 혹은 텍스트 스타일 버튼 */
+        .go-btn {
+            display: inline-block;
+            background-color: #5c667b; /* 사진 속 짙은 청회색 버튼 색상 */
+            color: #ffffff;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 2px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            line-height: 12px;
+        }
+        .go-btn:hover {
+            background-color: #464f62;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 과제 사진 속 사각형 프레임 구현 -->
+<div class="login-outer-box">
+    
+    <!-- 1. LOGIN 로고 (상단 배치) -->
+    <div class="login-logo">
+        <img src="/images/login_logo.gif" alt="LOGIN">
+    </div>
+
+    <!-- 2. 입력 및 로그인 버튼 폼 영역 -->
+    <form action="/login_process" method="post">
+        <div class="login-main-form">
+            <div class="input-group">
+                <!-- placeholder를 사용하여 사진처럼 기본 가이드 텍스트 노출 -->
+                <input type="text" name="userid" class="input-style" placeholder="아이디" required>
+                <input type="password" name="userpwd" class="input-style" placeholder="••••" required>
+            </div>
+            <!-- 우측에 세로로 길게 붙는 로그인 버튼 -->
+            <button type="submit" class="login-btn">로그인</button>
+        </div>
+    </form>
+
+    <!-- 3. 하단 링크 영역 (아직 회원이 아니세요? / 아이디나 비밀번호를...) -->
+    <div class="login-footer-links">
+        <div class="link-item">
+            <span class="arrow">&gt;</span> 아직 회원이 아니세요?
+            <a href="/register" class="go-btn">GO</a>
+        </div>
+    <div class="link-item">
+        <span class="arrow">&gt;</span> 아이디나 비밀번호를 잊어버리셨나요?
+        <!-- 백엔드 find_account 라우트로 이동하도록 경로 수정 -->
+        <a href="/find_account" class="go-btn">GO</a>
+    </div>
+    </div>
+
+</div>
+
+</body>
+</html>

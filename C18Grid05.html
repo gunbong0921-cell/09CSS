@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C18Grid05.html</title>
+  <style>
+    /*
+    auto-fit : 한줄에 가능한만큼 꽉차게 아이템을 출력한다. 대신 숫자를 넣으면 그 만큼만 아이템이 
+      표시된다.
+    minmax(최소값, 최대값) : 한 아이템당 최소크기는 200px로 지정하고, 최대넓이는 1fr로 지정한다.  
+    */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .item {
+      background-color: #f44336;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      padding: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>반응형 Grid 만들기</h2>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디/비밀번호 찾기</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            font-size: 13px;
+            color: #333;
+            background-color: #fff;
+            padding: 40px;
+        }
+        .find-container {
+            width: 710px;
+            margin: 0 auto;
+        }
+        .tab-area {
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+        .tab-area label {
+            font-weight: bold;
+            color: #444;
+            margin-right: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tab-area input[type="radio"] {
+            margin: 0;
+            vertical-align: middle;
+        }
+        .find-box {
+            border: 4px solid #dbdbdb;
+            border-radius: 2px;
+            box-shadow: inset 2px 2px 4px #b8b8b8, 2px 2px 4px #e8e8e8;
+            padding: 45px 30px 30px 30px;
+            background-color: #fff;
+            box-sizing: border-box;
+            min-height: 250px;
+        }
+        .find-table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .find-table td {
+            padding: 8px 0;
+            vertical-align: middle;
+        }
+        .label-cell {
+            width: 140px;
+            font-weight: bold;
+            color: #555;
+            padding-left: 60px;
+            box-sizing: border-box;
+        }
+        .arrow {
+            color: #c62931;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        input[type="text"], select {
+            height: 26px;
+            border: 1px solid #ccc;
+            padding: 0 5px;
+            box-sizing: border-box;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+        .input-long { width: 260px; }
+        .input-short { width: 50px; text-align: center; }
+        .input-email { width: 100px; }
+        .dot-line {
+            border: none;
+            border-top: 1px dotted #999;
+            margin: 25px auto 30px auto;
+            width: 80%;
+        }
+        .info-text {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .btn-center { text-align: center; }
+        .btn-find {
+            background-color: #5c667b;
+            color: white;
+            border: none;
+            padding: 6px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        .btn-find:hover { background-color: #464f62; }
+    </style>
+</head>
+<body>
+
+<div class="find-container">
+    
+    <!-- 탭 선택 영역 -->
+    <div class="tab-area">
+        <label><input type="radio" name="find_type" value="id" checked> 아이디 찾기</label>
+        <label><input type="radio" name="find_type" value="pw"> 비밀번호 찾기</label>
+    </div>
+
+    <!-- 1. 아이디 찾기 박스 -->
+    <div id="box-find-id" class="find-box">
+        <form id="form-find-id">
+            <table class="find-table">
+                <tr>
+                    <td class="label-cell"><span class="arrow">&gt;</span>이름(대표자명)</td>
+                    <td><input type="text" name="username" class="input-long" required></td>
+                </tr>
+                <tr>
+                    <td class="label-cell"><span class="arrow">&gt;</span>
+                        <select id="id_contact_type" name="contact_type" style="width: 85px;">
+                            <option value="mobile">휴대전화</option>
+                            <option value="email">이메일</option>
+                        </select>
+                    </td>
+                    <td>
+                        <!-- 휴대전화 입력 컴포넌트 -->
+                        <div id="id_mobile_inputs" style="display: inline-block;">
+                            <input type="text" name="phone1" class="input-short" maxlength="4"> -
+                            <input type="text" name="phone2" class="input-short" maxlength="4"> -
+                            <input type="text" name="phone3" class="input-short" maxlength="4">
+                        </div>
+                        <!-- 이메일 입력 컴포넌트 (초기 숨김) -->
+                        <div id="id_email_inputs" style="display: none;">
+                            <input type="text" name="email1" class="input-email"> @
+                            <input type="text" name="email2" id="id_email2" class="input-email">
+                            <select id="id_email_domain">
+                                <option value="">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <hr class="dot-line">
+            <div class="info-text">아이디를 찾기 위해서 이름과 휴대번호 혹은 이메일을 입력하세요.</div>
+            <div class="btn-center"><button type="submit" class="btn-find">확인</button></div>
+        </form>
+    </div>
+
+    <!-- 2. 비밀번호 찾기 박스 (초기 숨김) -->
+    <div id="box-find-pw" class="find-box" style="display: none;">
+        <form id="form-find-pw">
+            <table class="find-table">
+                <tr>
+                    <td class="label-cell"><span class="arrow">&gt;</span>아이디</td>
+                    <td><input type="text" name="userid" class="input-long" required></td>
+                </tr>
+                <tr>
+                    <td class="label-cell"><span class="arrow">&gt;</span>이름(대표자명)</td>
+                    <td><input type="text" name="username" class="input-long" required></td>
+                </tr>
+                <tr>
+                    <td class="label-cell"><span class="arrow">&gt;</span>
+                        <select id="pw_contact_type" name="contact_type" style="width: 85px;">
+                            <option value="email">이메일</option>
+                            <option value="mobile">휴대전화</option>
+                        </select>
+                    </td>
+                    <td>
+                        <!-- 이메일 입력 컴포넌트 -->
+                        <div id="pw_email_inputs" style="display: inline-block;">
+                            <input type="text" name="email1" class="input-email"> @
+                            <input type="text" name="email2" id="pw_email2" class="input-email">
+                            <select id="pw_email_domain">
+                                <option value="">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
+                            </select>
+                        </div>
+                        <!-- 휴대전화 입력 컴포넌트 (초기 숨김) -->
+                        <div id="pw_mobile_inputs" style="display: none;">
+                            <input type="text" name="phone1" class="input-short" maxlength="4"> -
+                            <input type="text" name="phone2" class="input-short" maxlength="4"> -
+                            <input type="text" name="phone3" class="input-short" maxlength="4">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <hr class="dot-line">
+            <div class="info-text">비밀번호를 찾기 위해서 아이디, 이름과 휴대전화 혹은 이메일을 입력하세요.</div>
+            <div class="btn-center"><button type="submit" class="btn-find">확인</button></div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    // 1. 대형 탭 전환 로직 (아이디 찾기 <-> 비밀번호 찾기)
+    const radioButtons = document.querySelectorAll('input[name="find_type"]');
+    const boxFindId = document.getElementById('box-find-id');
+    const boxFindPw = document.getElementById('box-find-pw');
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'id') {
+                boxFindId.style.display = 'block';
+                boxFindPw.style.display = 'none';
+            } else {
+                boxFindId.style.display = 'none';
+                boxFindPw.style.display = 'block';
+            }
+        });
+    });
+
+    // 2. 입력 셀렉트 박스 선택 전환 로직 (휴대전화 <-> 이메일)
+    // (1) 아이디 찾기 폼 내 제어
+    document.getElementById('id_contact_type').addEventListener('change', function() {
+        if (this.value === 'mobile') {
+            document.getElementById('id_mobile_inputs').style.display = 'inline-block';
+            document.getElementById('id_email_inputs').style.display = 'none';
+        } else {
+            document.getElementById('id_mobile_inputs').style.display = 'none';
+            document.getElementById('id_email_inputs').style.display = 'inline-block';
+        }
+    });
+    // (2) 비밀번호 찾기 폼 내 제어
+    document.getElementById('pw_contact_type').addEventListener('change', function() {
+        if (this.value === 'email') {
+            document.getElementById('pw_email_inputs').style.display = 'inline-block';
+            document.getElementById('pw_mobile_inputs').style.display = 'none';
+        } else {
+            document.getElementById('pw_email_inputs').style.display = 'none';
+            document.getElementById('pw_mobile_inputs').style.display = 'inline-block';
+        }
+    });
+
+    // 3. 이메일 도메인 렉트 자동완성 바인딩
+    function bindEmailDomain(selectId, inputId) {
+        document.getElementById(selectId).addEventListener('change', function() {
+            const input = document.getElementById(inputId);
+            if (this.value === "") {
+                input.value = "";
+                input.readOnly = false;
+                input.focus();
+            } else {
+                input.value = this.value;
+                input.readOnly = true;
+            }
+        });
+    }
+    bindEmailDomain('id_email_domain', 'id_email2');
+    bindEmailDomain('pw_email_domain', 'pw_email2');
+
+    // 4. 아이디 찾기 서버 실시간 연동 (Fetch API)
+    document.getElementById('form-find-id').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const contactType = formData.get('contact_type');
+        
+        let targetValue = "";
+        if (contactType === 'mobile') {
+            targetValue = `${formData.get('phone1')}-${formData.get('phone2')}-${formData.get('phone3')}`;
+        } else {
+            targetValue = `${formData.get('email1')}@${formData.get('email2')}`;
+        }
+
+        fetch('/find_id', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: formData.get('username'),
+                contact_type: contactType,
+                value: targetValue
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.result === 'success') {
+                alert(`조회 결과: 회원님의 아이디는 [ ${data.userid} ] 입니다.`);
+            } else {
+                alert(data.message);
+            }
+        });
+    });
+
+    // 5. 비밀번호 찾기 서버 실시간 연동 (Fetch API)
+    document.getElementById('form-find-pw').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const contactType = formData.get('contact_type');
+        
+        let targetValue = "";
+        if (contactType === 'mobile') {
+            targetValue = `${formData.get('phone1')}-${formData.get('phone2')}-${formData.get('phone3')}`;
+        } else {
+            targetValue = `${formData.get('email1')}@${formData.get('email2')}`;
+        }
+
+        fetch('/find_pw', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userid: formData.get('userid'),
+                username: formData.get('username'),
+                contact_type: contactType,
+                value: targetValue
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.result === 'success') {
+                alert(`조회 결과: 회원님의 비밀번호는 [ ${data.userpwd} ] 입니다.`);
+            } else {
+                alert(data.message);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

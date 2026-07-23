@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 1. 전체 페이지 그리드 설정 */
+    .page {
+      display: grid;
+      /* 3행 2열인 레이아읏 생성 */
+      grid-template-areas: 
+        "gnb gnb"
+        "lnb content" 
+        "footer footer";
+      /* 가로 방향으로 레이아웃 크기 지정 */  
+      grid-template-columns: 200px 1fr;
+      /* 세로 방향 지정 */
+      grid-template-rows: auto 1fr auto;
+      /* 높이는 뷰포트 100%로 지정 */
+      min-height: 100vh;  
+    }
+    /* 2. GNB (상단 메뉴) */
+    .gnb {
+      grid-area: gnb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+    }
+    .gnb .logo {
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: 30px;
+    }
+    /* 상단 메뉴는 li태그로 구성했으므로 블릿을 제거한다. */
+    .gnb ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none; /* 블릿 제거 */
+    }
+    .gnb ul li {
+      margin-right: 20px;
+    }
+    /* GNB 메뉴의 링크 효과 주기 */
+    .gnb a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    /* 햄버거 메뉴 아이콘 */
+    .hamburger {
+      /* 처음에는 숨김처리. 웹브라우저의 사이즈를 줄이면 flex를 통해 보임 처리한다. */
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+    }
+    /* 햄버거 메뉴의 색깔과 모양 설정 */
+    .hamburger div {
+      background-color: white;
+      height: 4px;
+      width: 100%;
+    }
+    /* 3. LNB (좌측 네비게이션) */
+    .lnb {
+      grid-area: lnb;
+      background-color: #f0f0f0;
+      padding: 20px;
+      height: 100%;
+    }
+    .lnb ul {
+      list-style: none;
+      padding: 0;
+    }
+    .lnb li {
+      margin-bottom: 10px;
+    }
+    /* 4. 본문 영역 (게시판) */
+    .content {
+      grid-area: content;
+      padding: 20px;
+    }
+    .board {
+      margin-bottom: 20px;
+    }
+    .board h3 {
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #2196F3;
+      color: white;
+    }
+    /* 5. Footer(카피라이트 사업자번호, 주소 등) */
+    .footer {
+      grid-area: footter;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    /* 6. 반응형 - 모바일 일때 */
+    /* 반응형웹 처리. media쿼리를 사용해서 768px 이하일때 레이앙수을 설정한다. */
+    @media(max-width: 768px) {
+      .page {
+        grid-template-areas: 
+          "gnb"
+          "content"
+          "footer";
+      grid-template-columns: 1fr;    
+      }
+      /* 좌측 메뉴 숨기기 */
+      .lnb {
+        display: none;
+      }
+      /* 햄버거 메뉴 보이게 하기 */
+      .hamburger {
+        display: flex;
+      }
+      /* li태그로 구성된 상단메뉴 숨김 처리 */
+      .gnb ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+      .gnb ul li {
+        margin: 10px 0;
+      }
+      /* 햄버거 메뉴 클릭 시 메뉴 보이게 하기 */
+      .gnb.active ul {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- GNB (상단) -->
+    <header class="gnb">
+      <div class="logo">MySite</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+    <!-- LNB (좌측 네비게이션) -->
+    <nav class="lnb">
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+    </nav>
+    <!-- 본문 영역 (게시판) -->
+    <main class="content">
+      <h2>공지사항</h2>
+      <div class="board">
+        <h3>최근 공지</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>시스템 점검 공지</td>
+              <td>관리자</td>
+              <td>2025-04-27</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>서비스 업데이트 안내</td>
+              <td>홍길동</td>
+              <td>2025-04-25</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>회원가입 정책 변경</td>
+              <td>관리자</td>
+              <td>2025-04-20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <!-- Footer (하단) -->
+    <footer class="footer">
+      <p>&copy; 2025 MySite. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    function toggleMenu() {
+      const gnb = document.querySelector('.gnb');
+      gnb.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

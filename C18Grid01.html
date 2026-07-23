@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C18Grid01.html</title>
+  <style>
+    .container {
+      /* grid 레이아웃 적용 */
+      display: grid;
+      /* 열과 행을 각 2개로 나누어서 2행 2열로 분할 */
+      grid-template-columns: 1fr 1fr; /* 열 2개 */
+      grid-template-rows: 1fr 1fr; /* 행 2개 */
+      /* 아이템 */
+      gap: 10px;
+    }
+    .item {
+      background-color: #4caf50;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>grid - 2행 2열 레이아웃</h2>
+  <div class="container">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+    <div class="item">D</div>
+  </div>
+</body>
+</html>
