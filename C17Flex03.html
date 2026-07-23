@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C17Flex03.html</title>
+  <style>
+    /*
+    교차축(Cross axis)에서의 아이템 정렬
+    align-item를 통해 교차 축에서 아이템이 어떻게 정렬될지 설정
+      stretch : 컨테이너 크기에 맞춰 늘림. 단 height 속성으로 높이가 지정되어 있다면
+        적용되지 않는다.
+      flex-start : 위쪽 정렬
+      flex-end : 아래쪽 정렬
+      center : 세로 방향에서 가운데 정렬
+      baseline : 텍스트 기준선(아래부분)에 맞춤. 단 텍스트의 크기가 모두 동일하면 
+        flex-start와    
+    */
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline; /* 교차 축 정렬 */
+      border: 2px solid #333; padding: 10px;
+      height: 300px;
+    }
+    /* 아이템 박스의 공통 속성 */
+    .item {
+      background-color: lightgreen; margin: 5px;
+      text-align: center; font-weight: bold; padding: 10px;
+    }
+    /* 이 부분이 활성화되면 stretch와 flex-start는 차이가 없음
+    높이가 지정되면 늘어나지 않기 때문 */
+    /*
+    .item:nth-child(1) {
+    height: 40px;
+    }
+    */
+    .item:nth-child(2) {
+      height: 80px; font-size: 1.5em;
+    }
+    .item:nth-child(3) {
+      height: 120px; font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flexbox-교차 축에서 정렬</h2>
+  <div class="container">
+    <div class="item">One</div>
+    <div class="item">Two</div>
+    <div class="item">Three</div>
+  </div>
+</body>
+</html>

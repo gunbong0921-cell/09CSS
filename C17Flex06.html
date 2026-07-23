@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C17Flex06.html</title>
+  <style>
+    /*
+    flex-grow : '남은 공간이 있을때' 얼마나 놀랄지 비율로 설정
+    flex-shirnk : '남은 공간이 부족할때' 얼마나 줄일지 비율로 설정
+    flex-basis : 아이템의 초기 기본 크기를 설정(width와는 다름)
+    */
+    .container {
+      display: flex;
+      border: 2px solid #333;
+      width: 500px;
+      height: 200px;
+      margin-bottom: 40px;
+    }
+    /* 아이템의 공통 속성 */
+    .item {
+      background-color: #4caf50;
+      margin: 10px;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      line-height: 50px;
+    }
+    .item1 {
+      flex-grow: 1; /* 남은 공간을 1 비율로 늘림 */
+      flex-shrink: 1; /* 남은 공간이 부족하면 줄어듬 */
+      flex-basis: 200px; /* 기본 크기 200px */
+    }
+    .item2 {
+      flex-grow: 2;
+      flex-shrink: 1;
+      flex-basis: 100px;
+    }
+    .item3 {
+      flex-grow: 1;
+      flex-shrink: 0; /* 공간이 부족해도 줄어들지 않음 */
+      flex-basis: 300px;
+    }
+    /* 통합속성으로 grow, shrink, basis를 지정함 */
+    .item4 {
+      flex: 1 1 200px;
+    }
+    .item5 {
+      flex: 2 1 100px;
+    }
+    .item6 {
+      flex: 1 0 300px;
+    }
+  </style>
+</head>
+<body>
+  <h2>flex-grow, flex-shrink, flex-basis 개별 설정</h2>
+  <div class="container">
+    <div class="item item1">Item 1</div>
+    <div class="item item2">Item 2</div>
+    <div class="item item3">Item 3</div>
+  </div>
+
+  <h2>축약형 flex 설정</h2>
+  <div class="container">
+    <div class="item item4">Item A</div>
+    <div class="item item5">Item B</div>
+    <div class="item item6">Item C</div>
+  </div>
+</body>
+</html>

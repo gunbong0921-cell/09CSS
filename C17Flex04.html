@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C17Flex04.html</title>
+  <style>
+    /*
+    아이템이 많을때 자동 줄바꿈을 설정하고, 줄간 정렬을 제어할 수 있다. 
+    flex-wrap : wrap을 사용하면 아이템이 한 줄에 들어가지 않는 경우 자동으로 다음줄로 이동시켜준다.
+    align-content : 아이템이 2줄 이상일때 교차 방향의 정렬을 설정. 단 2층 이상이 아니라면 효과가 적용되지 않음.
+      stretch : 줄을 늘려 여백 채움(디폴트값)
+      flex-start, flex-end : 위쪽 혹은 아래쪽 줄 정렬
+      center : 세로 가운데 줄 정렬 
+    */
+    .container {
+      display: flex;
+      /* 줄바꿈을 헝요함. 이 속성을 지우면 브라우저를 줄여도 줄바꿈이 되지 않는다. */
+      flex-wrap: wrap;
+      align-content: center;
+      height: 300px;
+      border: 2px solid #333; padding: 5px;
+    }
+    .item {
+      width: 100px; line-height: 60px; margin: 5px;
+      background-color: lightcoral; text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flexbox-여러줄 처리</h2>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+</body>
+</html>
