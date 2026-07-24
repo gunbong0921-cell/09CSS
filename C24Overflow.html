@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C24Overflow.html</title>
+</head>
+<body>
+  <style>
+    /* 
+    overflow : 크기가 재한된 영역에서 많은 양의 컨텐츠가 필요한 경우 보임 상태를 설정한다.
+      visible : 디폴트값. 별도의 제한없이 모든 컨텐츠 표시.
+      hidden : 영역을 초과하는 컨텐츠는 화만에서 숨김 처리
+      scroll : 스크롤바 생성
+      auto : 컨텐츠 양에 따라 필요한 경우에만 스크롤바를 자동으로 생성 
+    */
+    div.mybox {
+      background-color: coral;
+      width: 500px;
+      height: 100px;
+      border: 1px solid;
+      overflow: auto;
+    }
+  </style>
+  <h2>Overflow 속성</h2>
+  <div class="mybox">
+    <p>
+      1920년대 서울, 인력거꾼 김첨지는 며칠 동안 돈벌이를 하지 못해 굶주리고 있었습니다. 병석에 누운 아내가 눈물로 나가지 말라고 애원했음에도 불구하고 집을 나선 그는 그날 따라 손님이 끊이지 않고 장거리까지 연달아 태우며 평소보다 훨씬 많은 돈을 벌게 됩니다.
+    </p>
+    <p>
+      엄청난 행운에 기뻐하면서도 김첨지는 내심 아내의 병세가 마음에 걸려 불안해합니다. 일을 마치고 돌아가는 길에 아내가 그토록 먹고 싶어 하던 설렁탕을 사서 집에 도착하지만, 집안은 이상하리만큼 쥐죽은 듯 조용합니다. 불길한 예감에 방으로 들어간 김첨지는 싸늘하게 식어 있는 아내의 주검을 확인하고 오열합니다.
+    </p>
+  </div>
+</body>
+</html>

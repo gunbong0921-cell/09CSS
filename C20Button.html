@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <h2>버튼 효과1</h2>
+    <style>
+    /* a태그의 기본상태를 설정(링크, 방문이력이 있는 경우까지 포함) */
+    a.button1:link, a.button1:visited {
+        background-color: white;
+        color: black;
+        border: 2px solid green;
+        /* 값이 2개인 경우에는 상하 좌우 순서대로 적용된다. */
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+    /* 마우스를 올리거나 클릭했을때 효과 설정 */
+    a.button1:hover, a.button1:active {
+        background-color: green;
+        color: white;
+    }    
+    </style>
+    <a href="#" class="button1">a태그로 만든 버튼</a>
+
+    <h2>버튼 효과2</h2>
+    <style>
+        /* duration 속성으로 배경색이 변하는 시간을 설정하여
+        페이드인 효과를 적용. */
+        .button {
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+        /* 버튼에 마우스를 올렸을때, 내렸을때의 스타일 설정 */
+        .button2 {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #008CBA;
+        }
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+    <button class="button button2">button태그로 만든 버튼1</button>
+
+    <h2>버튼 효과3</h2>
+    <style>
+    .button3 {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #af4c9e;
+        border: none;
+        /* 버튼의 모서리 부분을 깍아서 라운딩 효과 적용*/
+        border-radius: 15px;
+        /* 버튼 아래에 그림자 효과를 추가. 속성값은 순서대로
+        왼쪽여백, 상단여백, 블러효과, 그림자색깔을 지정한다. 
+        여기서는 블러효과가 빠져있다.  */
+        box-shadow: 10px 9px #999 ;
+    }
+    .button3:hover {background-color: #7e3672}
+    .button3:active {
+        background-color: #7e3672;
+        box-shadow: 10px 9px #666;
+        /* 버튼을 클릭하면 Y축 방향으로 움직인다. */
+        transform: translateY(4px) translateX(4px);
+    }
+    </style>
+    <button class="button3">button태그로 만든 버튼2</button>
+
+    <h2>부트스트랩 - 버튼1</h2>
+    <button type="button" class="btn">Basic</button>
+    <button type="button" class="btn btn-primary">전송하기</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-link">Link</button>
+
+    <h2>부트스트랩 - 버튼2</h2>
+    <button type="button" class="btn btn-outline-primary">
+      Primary
+      <spin class="spinner-grow text-primary" style="width: 20px;height: 20px;"></spin>
+    </button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success"
+      data-bs-toggle="modal" data-bs-target="#myModal">
+      모달창띄우기
+    </button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-danger">
+      Danger
+      <spin class="spinner-border text-danger" style="width: 20px;height: 20px;"></spin>
+    </button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+    <button type="button" class="btn btn-outline-light text-dark">Light</button>
+    <br><br><br><br><br>
+    
+    <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">댓글쓰기</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+            <label for="email">Email</label>
+          </div>
+          제목: <input type="text" class="form-control">
+          <br>
+          <textarea name="" id="" class="form-control"></textarea>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary">전송하기</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<!-- 
+    https://www.w3schools.com/css/css3_buttons.asp
+-->
