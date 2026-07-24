@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>밑줄만 있는 테이블</h2>
+    <style>
+    /* 테이블의 외곽 테두리를 1px 직성으로 설정 */
+    #table1 {
+        border-collapse: collapse;
+        width: 400px;
+        border: 1px solid #ddd;
+    }    
+    #table1 th{
+        background-color: silver;
+    }
+    #table1 th, #table1 td {
+        padding: 10px;
+        /* th, td에 아래쪽 테두리만 1px 직선으로 설정 */
+        border-bottom: 1px solid #ddd;
+    }
+    </style>
+    <table id="table1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>몸무게</th>
+        </tr>
+        <tr>
+            <td>이순신</td>
+            <td>30세</td>
+            <td>77kg</td>
+        </tr>       
+        <tr>
+            <td>홍길동</td>
+            <td>25세</td>
+            <td>65kg</td>
+        </tr>       
+    </table>
+
+    <h2>모든 테두리가 있는 테이블</h2>
+    <style>
+    #table2 {
+        border-collapse: collapse;
+        width: 400px;
+        border: 1px solid #ddd;
+    }    
+    #table2 th{
+        background-color: silver;
+    }
+    #table2 th, #table2 td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+    </style>
+    <table id="table2">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>몸무게</th>
+        </tr>
+        <tr>
+            <td>이순신</td>
+            <td>30세</td>
+            <td>77kg</td>
+        </tr>       
+        <tr>
+            <td>홍길동</td>
+            <td>25세</td>
+            <td>65kg</td>
+        </tr>       
+    </table>
+
+    <h2>hover 효과가 있는 테이블</h2>
+    <style>
+    #table3 {
+        border-collapse: collapse;
+        width: 400px;
+        border: 1px solid #ddd;
+    }
+    /* tr은 th 혹은 td의 부모 태그이므로 마우스를 올렸을때 전체 행의
+    색깔을 변경할 수 있다. */
+    #table3 tr:hover {background-color: coral;}    
+    /* th 태그에는 마우스 오버 효과가 적용되지 않는다. 회색 배경만 적용된다. */
+    #table3 th{
+        background-color: silver;
+    }
+    #table3 th, #table3 td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+    </style>
+    <table id="table3">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>몸무게</th>
+        </tr>
+        <tr>
+            <td>이순신</td>
+            <td>30세</td>
+            <td>77kg</td>
+        </tr>       
+        <tr>
+            <td>홍길동</td>
+            <td>25세</td>
+            <td>65kg</td>
+        </tr>       
+    </table>
+
+    <h2>스트라이프 효과가 있는 테이블</h2>
+    <style>
+    #table4 {
+        border-collapse: collapse;
+        width: 400px;
+        border: 1px solid #ddd;
+    }
+    /*
+    스트라이프 효과는 구조선택자를 통해 부여할 수 있다.
+    odd(홀수), even(짝수)를 가리키는 키워드로 2n+1을 대체할 수 있다. 
+    */
+    /* #table4 tr:nth-child(odd) {background-color: #f2f2f2;} */
+    #table4 tr:nth-child(even) {background-color: #f2f2f2;}
+    #table4 tr:hover {background-color: coral;}    
+    
+    #table4 th{
+        background-color: silver;
+    }
+    #table4 th, #table4 td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+    </style>
+    <table id="table4">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>몸무게</th>
+        </tr>
+        <tr>
+            <td>이순신</td>
+            <td>30세</td>
+            <td>77kg</td>
+        </tr>       
+        <tr>
+            <td>홍길동</td>
+            <td>25세</td>
+            <td>65kg</td>
+        </tr>       
+    </table>
+</body>
+</html>
